@@ -1,0 +1,26 @@
+﻿@model HastaneRandevu.ViewModels.AuthLogin
+@{
+    ViewBag.Title = "Login Page";
+}
+
+<h2>Login</h2>
+
+<p>This is the Login View</p>
+@*<p>The value of Test in my model is : @Model.Test</p>*@
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div>
+        @Html.LabelFor(x => x.KimlikNo, "Kimlik     No" )
+        @Html.EditorFor(x => x.KimlikNo )
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Password)
+        @Html.EditorFor(x => x.Password)
+    </div>
+    <div>
+        <input type="submit" value="Login" />
+    </div>
+}
+
