@@ -66,7 +66,6 @@ namespace HastaneRandevu.Migrations
                 .WithColumn("telefon").AsString(15);
 
             Create.Table("user_roles")
-                .WithColumn("id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("user_id").AsInt32().ForeignKey("user", "id").OnDelete(Rule.Cascade)
                 .WithColumn("role_id").AsInt32().ForeignKey("role", "id").OnDelete(Rule.Cascade);
 
@@ -79,16 +78,14 @@ namespace HastaneRandevu.Migrations
                 .WithColumn("durum").AsString(20);
 
             Create.Table("doktor_detay")
-                .WithColumn("id").AsInt32().Identity().PrimaryKey()
-                .WithColumn("hastane_id").AsInt32().ForeignKey("hastane", "id").OnDelete(Rule.Cascade)
                 .WithColumn("doktor_id").AsInt32().ForeignKey("user", "id").OnDelete(Rule.Cascade)
+                .WithColumn("hastane_id").AsInt32().ForeignKey("hastane", "id").OnDelete(Rule.Cascade)
                 .WithColumn("klinik_id").AsInt32().ForeignKey("klinik", "id").OnDelete(Rule.Cascade)
                 .WithColumn("puan").AsFloat();
 
             Create.Table("admin_detay")
-                .WithColumn("id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("hastane_id").AsInt32().ForeignKey("hastane", "id").OnDelete(Rule.Cascade)
-                .WithColumn("admin_id").AsInt32().ForeignKey("user", "id").OnDelete(Rule.Cascade);
+                .WithColumn("admin_id").AsInt32().ForeignKey("user", "id").OnDelete(Rule.Cascade)
+                .WithColumn("hastane_id").AsInt32().ForeignKey("hastane", "id").OnDelete(Rule.Cascade);
         }
     }
 }

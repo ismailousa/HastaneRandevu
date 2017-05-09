@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HastaneRandevu.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +12,14 @@ namespace HastaneRandevu
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            var namespaces = new String[] { typeof(AuthController).Namespace };
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("Home", "", new { controller = "Home", action = "Index" });
-            routes.MapRoute("Login", "login", new { controller = "Auth", action = "Login" });
+            routes.MapRoute("Login", "login", new { controller = "Auth", action = "Login" }, namespaces);
+            routes.MapRoute("Logout", "logout", new { controller = "Auth", action = "Logout" }, namespaces);
+            routes.MapRoute("YeniUye", "newuser", new { controller = "Users", action = "New" });
         }
     }
 }

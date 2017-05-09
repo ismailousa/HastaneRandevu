@@ -27,6 +27,8 @@ namespace HastaneRandevu
 
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
+            mapper.AddMapping<RoleMap>();
+            mapper.AddMapping<CinsiyetMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
             _sessionFactory = config.BuildSessionFactory();

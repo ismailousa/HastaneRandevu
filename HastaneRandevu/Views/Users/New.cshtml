@@ -1,0 +1,40 @@
+﻿@model HastaneRandevu.ViewModels.UsersNew
+<h1>Yeni Üye</h1>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KimlikNo)
+        @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", type = "password"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+    </div>
+
+    @Html.Partial("_CinsiyetEditor", Model.Cinsiyetler)
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.DogumTarihi)
+        @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control" })
+    </div>
+
+    @Html.Partial("_RoleEditor", Model.Roles)
+
+    <input type="submit" value="Create User" class="btn btn-primary" />
+    <a href="@Url.Action("index")">or cancel</a>
+
+
+}

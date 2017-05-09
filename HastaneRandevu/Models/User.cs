@@ -19,13 +19,29 @@ namespace HastaneRandevu.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public virtual  DateTime DogumTarihi { get; set; }
         [ForeignKey("cinsiyet")]
-        public virtual string Cinsiyet { get; set; }
+        public virtual int CinsiyetRefId { get; set; }
+        public virtual Cinsiyet Cinsiyet { get; set; }
         public virtual string Email { get; set; }
         public virtual string Telefon { get; set; }
+        public virtual IList<Role> Roles { get; set; }
+        public User()
+        {
+            Roles = new List<Role>();
+        }
 
         public virtual void SetPassword(string password)
         {
-            PasswordHash = "123";
+            PasswordHash = BCrypt.Net.BCrypt.HashString(password, 13);
+        }
+
+        public virtual Boolean CheckPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
+        }
+
+        public static void FakeHash()
+        {
+            BCrypt.Net.BCrypt.HashString("", 13);
         }
     }
 
@@ -46,9 +62,24 @@ namespace HastaneRandevu.Models
                 x.NotNullable(true);
                 x.Column("password_hash");
             });
-            Property(x => x.DogumTarihi, x => x.NotNullable(true));
+            Property(x => x.DogumTarihi, x => {
+                x.NotNullable(true);
+                x.Column("dogum_tarihi");
+                });
+            Property(x => x.CinsiyetRefId, x =>
+            {
+                x.NotNullable(true);
+                x.Column("cinsiyet");
+            });
+
             Property(x => x.Email, x => x.NotNullable(true));
             Property(x => x.Telefon, x => x.NotNullable(true));
+
+            Bag(x => x.Roles, x => {
+                x.Table("user_roles");
+                x.Key(k => k.Column("user_id"));
+
+            }, x => x.ManyToMany(k => k.Column("role_id")));
         }
     }
 }

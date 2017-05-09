@@ -4,6 +4,25 @@
     background: #f5f5dc;
 }
 
+.divider {
+    width: 10px;
+    height: auto;
+    display: inline-block;
+}
+
+.editor-label {
+    clear: both;
+}
+
+editor-label label {
+    float: left;
+    width: 150px
+}
+
+editor-label input {
+    float: left;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
