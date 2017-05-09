@@ -1,3 +1,3 @@
 # HastaneRandevu
 
-Hasta doktor randevu alma
+Hasta doktor randevu alma sistemi
