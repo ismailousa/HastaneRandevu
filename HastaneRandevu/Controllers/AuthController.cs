@@ -20,18 +20,18 @@ namespace HastaneRandevu.Controllers
         [HttpPost]
         public ActionResult Login(AuthLogin form, string returnUrl)
         {
-            var user = Database.Session.Query<User>().FirstOrDefault(u => u.KimlikNo == form.KimlikNo);
+            //var user = Database.Session.Query<User>().FirstOrDefault(u => u.KimlikNo == form.KimlikNo);
 
-            if (user == null)
-                HastaneRandevu.Models.User.FakeHash();
+            //if (user == null)
+            //    HastaneRandevu.Models.User.FakeHash();
 
-            if (user == null || !user.CheckPassword(form.Password))
-                ModelState.AddModelError("Kimlik No", "Kimlik No ya da Sifre yanlistir");
+            //if (user == null || !user.CheckPassword(form.Password))
+            //    ModelState.AddModelError("Kimlik No", "Kimlik No ya da Sifre yanlistir");
             if (!ModelState.IsValid)
             {
                 return View(form);
             }
-            FormsAuthentication.SetAuthCookie(user.KimlikNo, true);
+            FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
                 return Redirect(returnUrl);
@@ -41,7 +41,7 @@ namespace HastaneRandevu.Controllers
             else if (User.IsInRole("Doktor"))
                 return Content("Welcome Doc");
             else
-                return RedirectToRoute("Home");
+                return RedirectToAction("Index", "Home", new { area = "Hasta" });
         }
 
         public ActionResult Logout()

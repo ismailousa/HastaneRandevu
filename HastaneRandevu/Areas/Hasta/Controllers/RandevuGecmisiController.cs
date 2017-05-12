@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
-    [Authorize(Roles = "hasta")]
-    public class HomeController : Controller
+    public class RandevuGecmisiController : Controller
     {
-        // GET: Hasta/Home
+        // GET: Hasta/RandevuGecmisi
         public ActionResult Index()
         {
             return View();

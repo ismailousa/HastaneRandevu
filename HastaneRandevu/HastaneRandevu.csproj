@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\styles\Admin.css" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
@@ -139,6 +140,11 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Hasta\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Hasta\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Hasta\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Hasta\Views\HesapBilgisi\Index.cshtml" />
+    <Content Include="Areas\Hasta\Views\RandevuGecmisi\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -153,7 +159,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Doktor\DoktorAreaRegistration.cs" />
+    <Compile Include="Areas\Hasta\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Hasta\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Hasta\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Hasta\HastaAreaRegistration.cs" />
     <Compile Include="Auth.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -163,6 +171,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\RoleProvider.cs" />
+    <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Migrations\_001_Users_and_Hospitals.cs" />
     <Compile Include="Models\Cinsiyet.cs" />
     <Compile Include="Models\Role.cs" />
@@ -200,8 +209,6 @@
     <Folder Include="Areas\Doktor\Models\" />
     <Folder Include="Areas\Doktor\Views\Shared\" />
     <Folder Include="Areas\Hasta\Models\" />
-    <Folder Include="Areas\Hasta\Views\Home\" />
-    <Folder Include="Areas\Hasta\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
