@@ -14,5 +14,9 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
         {
             return View();
         }
+        public ActionResult Logout()
+        {
+            return RedirectToRoute("Logout");
+        }
     }
 }

@@ -24,14 +24,14 @@
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
     </div>
 
-    @Html.Partial("_CinsiyetEditor", Model.Cinsiyetler)
+    @*@Html.Partial("_CinsiyetEditor", Model.Cinsiyetler)*@
 
     <div class="form-group">
         @Html.LabelFor(x => x.DogumTarihi)
         @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control" })
     </div>
 
-    @Html.Partial("_RoleEditor", Model.Roles)
+    @*@Html.Partial("_RoleEditor", Model.Roles)*@
 
     <input type="submit" value="Create User" class="btn btn-primary" />
     <a href="@Url.Action("index")">or cancel</a>

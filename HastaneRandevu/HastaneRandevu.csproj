@@ -145,6 +145,9 @@
     <Content Include="Areas\Hasta\Views\Home\Index.cshtml" />
     <Content Include="Areas\Hasta\Views\HesapBilgisi\Index.cshtml" />
     <Content Include="Areas\Hasta\Views\RandevuGecmisi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -158,6 +161,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HesapBilgileriController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RandevuGecmisiController.cs" />
+    <Compile Include="Areas\Doktor\Controllers\HomeDController.cs" />
+    <Compile Include="Areas\Doktor\Controllers\HesapBilgisiController.cs" />
+    <Compile Include="Areas\Doktor\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Doktor\DoktorAreaRegistration.cs" />
     <Compile Include="Areas\Hasta\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Hasta\Controllers\HomeController.cs" />
@@ -202,13 +211,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Doktor\Controllers\" />
+    <Folder Include="Areas\Admin\Views\HesapBilgileri\" />
+    <Folder Include="Areas\Admin\Views\Index\" />
+    <Folder Include="Areas\Admin\Views\RandevuGecmisi\" />
     <Folder Include="Areas\Doktor\Models\" />
+    <Folder Include="Areas\Doktor\Views\HesapBilgisi\" />
+    <Folder Include="Areas\Doktor\Views\Home\" />
+    <Folder Include="Areas\Doktor\Views\RandevuGecmisi\" />
     <Folder Include="Areas\Doktor\Views\Shared\" />
     <Folder Include="Areas\Hasta\Models\" />
+    <Folder Include="Areas\Hasta\Views\Admin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
