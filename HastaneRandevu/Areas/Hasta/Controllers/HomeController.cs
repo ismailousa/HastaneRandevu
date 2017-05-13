@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
-    [Authorize(Roles = "hasta")]
+    [Authorize(Roles = "Hasta")]
     public class HomeController : Controller
     {
         // GET: Hasta/Home

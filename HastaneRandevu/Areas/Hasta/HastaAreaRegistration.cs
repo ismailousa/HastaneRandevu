@@ -17,7 +17,7 @@ namespace HastaneRandevu.Areas.Hasta
             context.MapRoute(
                 "Hasta_default",
                 "Hasta/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Home",action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "HastaneRandevu.Areas.Hasta.Controllers" }
             );
         }

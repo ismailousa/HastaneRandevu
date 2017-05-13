@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace HastaneRandevu.Areas.Doktor.Controllers
+namespace HastaneRandevu.Areas.Admin.Controllers
 {
-    public class HomeDController : Controller
+    [Authorize(Roles = "Admin")]
+    public class HomeController : Controller
     {
-        // GET: Doktor/Doktor
+        // GET: Admin/Admin
         public ActionResult Index()
         {
             return View();

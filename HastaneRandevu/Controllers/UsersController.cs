@@ -16,20 +16,20 @@ namespace HastaneRandevu.Controllers
         {
 
             return View(new UsersNew()
-            //{
-            //    Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
-            //        cinsiyet => new CinsiyetRadioBox()
-            //        {
-            //            Id = cinsiyet.Id,
-            //            Name = cinsiyet.Name
-            //        }).ToList(),
-            //    Roles = Database.Session.Query<Role>().Select(
-            //        role => new RoleCheckBox()
-            //        {
-            //            Id = role.Id,
-            //            Name = role.Name
-            //        }).ToList()
-            //}
+            {
+                Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
+                    cinsiyet => new CinsiyetRadioBox()
+                    {
+                        Id = cinsiyet.Id,
+                        Name = cinsiyet.Name
+                    }).ToList(),
+                Roles = Database.Session.Query<Role>().Select(
+                    role => new RoleCheckBox()
+                    {
+                        Id = role.Id,
+                        Name = role.Name
+                    }).ToList()
+            }
             );
         }
     }

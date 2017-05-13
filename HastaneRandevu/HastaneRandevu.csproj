@@ -147,7 +147,14 @@
     <Content Include="Areas\Hasta\Views\RandevuGecmisi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Doktor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Doktor\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Doktor\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Doktor\Views\HesapBilgisi\Index.cshtml" />
+    <Content Include="Areas\Doktor\Views\RandevuGecmisi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HesapBilgisi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RandevuGecmisi\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -161,10 +168,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HesapBilgileriController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Admin\Controllers\RandevuGecmisiController.cs" />
-    <Compile Include="Areas\Doktor\Controllers\HomeDController.cs" />
+    <Compile Include="Areas\Doktor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Doktor\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Doktor\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Doktor\DoktorAreaRegistration.cs" />
@@ -212,14 +219,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\HesapBilgileri\" />
-    <Folder Include="Areas\Admin\Views\Index\" />
-    <Folder Include="Areas\Admin\Views\RandevuGecmisi\" />
     <Folder Include="Areas\Doktor\Models\" />
-    <Folder Include="Areas\Doktor\Views\HesapBilgisi\" />
-    <Folder Include="Areas\Doktor\Views\Home\" />
-    <Folder Include="Areas\Doktor\Views\RandevuGecmisi\" />
-    <Folder Include="Areas\Doktor\Views\Shared\" />
     <Folder Include="Areas\Hasta\Models\" />
     <Folder Include="Areas\Hasta\Views\Admin\" />
   </ItemGroup>

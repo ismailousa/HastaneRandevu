@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
+    [Authorize(Roles = "Hasta")]
     public class HesapBilgisiController : Controller
     {
         // GET: Hasta/HesapBilgisi

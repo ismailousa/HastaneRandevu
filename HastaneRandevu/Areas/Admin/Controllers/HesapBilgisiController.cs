@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    [Authorize(Roles = "Admin")]
+    public class HesapBilgisiController : Controller
     {
-        // GET: Admin/Admin
+        // GET: Admin/HesapBilgileri
         public ActionResult Index()
         {
             return View();

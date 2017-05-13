@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RandevuGecmisiController : Controller
     {
         // GET: Admin/RandevuGecmisi

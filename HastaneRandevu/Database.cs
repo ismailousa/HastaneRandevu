@@ -36,12 +36,17 @@ namespace HastaneRandevu
 
         public static void OpenSession()
         {
-
+            HttpContext.Current.Items[SessionKey] = _sessionFactory.OpenSession();
         }
 
         public static void CloseSession()
         {
-
+            var session = HttpContext.Current.Items[SessionKey] as ISession;
+            if (session != null)
+            {
+                session.Close();
+            }
+            HttpContext.Current.Items.Remove(SessionKey);
         }
     }
 }

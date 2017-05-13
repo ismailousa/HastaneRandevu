@@ -46,13 +46,7 @@ namespace HastaneRandevu.Infrastructure
 
         public override string[] GetRolesForUser(string kimlikno)
         {
-            //return Auth.User.Roles.Select(role => role.Name).ToArray();
-            if (kimlikno == "Trakya")
-                return new string[] { "Hasta" };
-            else if (kimlikno == "Admin")
-                return new string[] { "Admin" };
-            else
-                return new string[] { "Doktor" };
+            return Auth.User.Roles.Select(role => role.Name).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)

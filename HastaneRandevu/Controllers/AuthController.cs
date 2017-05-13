@@ -20,13 +20,13 @@ namespace HastaneRandevu.Controllers
         [HttpPost]
         public ActionResult Login(AuthLogin form, string returnUrl)
         {
-            //var user = Database.Session.Query<User>().FirstOrDefault(u => u.KimlikNo == form.KimlikNo);
+            var user = Database.Session.Query<User>().FirstOrDefault(u => u.KimlikNo == form.KimlikNo);
 
-            //if (user == null)
-            //    HastaneRandevu.Models.User.FakeHash();
+            if (user == null)
+                HastaneRandevu.Models.User.FakeHash();
 
-            //if (user == null || !user.CheckPassword(form.Password))
-            //    ModelState.AddModelError("Kimlik No", "Kimlik No ya da Sifre yanlistir");
+            if (user == null || !user.CheckPassword(form.Password))
+                ModelState.AddModelError("Kimlik No", "Kimlik No ya da Sifre yanlistir");
             if (!ModelState.IsValid)
             {
                 return View(form);
@@ -36,14 +36,14 @@ namespace HastaneRandevu.Controllers
                 redirect = true;
             FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
-            if (redirect)
+            //if (redirect)
                 if (!string.IsNullOrWhiteSpace(returnUrl))
                     return Redirect(returnUrl);
 
             if (User.IsInRole("Admin"))
-                return Content("Welcome Admin");
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
             else if (User.IsInRole("Doktor"))
-                return Content("Welcome Doc");
+                return RedirectToAction("Index", "Home", new { area = "Doktor" });
             else
                 return RedirectToAction("Index", "Home", new { area = "Hasta" });
         }
