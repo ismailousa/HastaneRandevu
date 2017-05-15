@@ -9,6 +9,7 @@ namespace HastaneRandevu
 {
     public static class Auth
     {
+        private const string UserKey = "HastaneRandevu.Auth.Userkey";
         public static User User
         {
             get

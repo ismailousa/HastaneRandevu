@@ -5,7 +5,7 @@
     @Html.ValidationSummary()
 
     <div class="form-group">
-        @Html.LabelFor(x => x.KimlikNo)
+        @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
         @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
     </div>
 
@@ -26,15 +26,15 @@
 
     @Html.Partial("_CinsiyetEditor", Model.Cinsiyetler)
 
-    <div class="form-group">
-        @Html.LabelFor(x => x.DogumTarihi)
-        @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control" })
+    <div class="form-group date" data-date-format="mm/dd/yyyy">
+        @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
+        @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control"})
     </div>
 
     @Html.Partial("_RoleEditor", Model.Roles)
 
     <input type="submit" value="Create User" class="btn btn-primary" />
-    <a href="@Url.Action("index")">or cancel</a>
+    <a href="@Url.Action("Login")">or cancel</a>
 
 
 }
