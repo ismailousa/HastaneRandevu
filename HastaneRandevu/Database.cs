@@ -12,7 +12,7 @@ namespace HastaneRandevu
     public static class Database
     {
         private static ISessionFactory _sessionFactory;
-        private const string SessionKey = "SimpleBlog.Database.SessionKey";
+        private const string SessionKey = "HastaneRandevu.Database.SessionKey";
 
         public static ISession Session
         {

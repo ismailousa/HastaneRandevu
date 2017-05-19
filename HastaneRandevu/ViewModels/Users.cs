@@ -34,6 +34,9 @@ namespace HastaneRandevu.ViewModels
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DogumTarihi { get; set; }
+        
+        [Required, DataType(DataType.PhoneNumber)]
+        public string Telefon { get; set; }
 
         [Required]
         [MaxLength(256)]

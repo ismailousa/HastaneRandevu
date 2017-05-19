@@ -20,6 +20,11 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(x => x.Telefon)
+        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(x => x.Email)
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
     </div>

@@ -11,7 +11,49 @@ namespace HastaneRandevu.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: Users
+
+        private void SyncProperty(IList<RoleCheckBox> checkBoxes, IList<Role> roles)
+        {
+            var selectedRoles = new List<Role>();
+
+
+            foreach (var role in Database.Session.Query<Role>())
+            {
+                var checkBox = checkBoxes.Single(c => c.Id == role.Id);
+                checkBox.Name = role.Name;
+
+                if (checkBox.IsChecked)
+                    selectedRoles.Add(role);
+            }
+
+
+            foreach (var toAdd in selectedRoles.Where(p => !roles.Contains(p)))
+            {
+                roles.Add(toAdd);
+            }
+
+            foreach (var toRemove in roles.Where(p => !selectedRoles.Contains(p)).ToList())
+            {
+                roles.Remove(toRemove);
+            }
+
+
+        }
+
+        private void SyncProperty(IList<CinsiyetRadioBox> radioButtons, ref int refId)
+        {
+            foreach (var cinsiyet in Database.Session.Query<Cinsiyet>())
+            {
+                var radioButton = radioButtons.Single(c => c.Id == cinsiyet.Id);
+                radioButton.Name = cinsiyet.Name;
+
+                if (radioButton.IsChecked)
+                {
+                    refId = cinsiyet.Id;
+                }
+            }
+        }
+
         public ActionResult New()
         {
 
@@ -31,6 +73,46 @@ namespace HastaneRandevu.Controllers
                     }).ToList()
             }
             );
+        }
+
+        [HttpPost]
+        public ActionResult New(UsersNew form)
+        {
+            if (Database.Session.Query<User>().Any(u => u.KimlikNo == form.KimlikNo))
+                ModelState.AddModelError("Kimlik No", "Kimlik No tek olmasi gerekir");
+            if (!ModelState.IsValid)
+            {
+                form.Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
+                    cinsiyet => new CinsiyetRadioBox()
+                    {
+                        Id = cinsiyet.Id,
+                        Name = cinsiyet.Name
+                    }).ToList();
+                form.Roles = Database.Session.Query<Role>().Select(
+                    role => new RoleCheckBox()
+                    {
+                        Id = role.Id,
+                        Name = role.Name
+                    }).ToList();
+
+                return View(form);
+            }
+            var user = new User
+            {
+                KimlikNo = form.KimlikNo,
+                Username = form.Username,
+                DogumTarihi = form.DogumTarihi,
+                Email = form.Email,
+                Telefon = form.Telefon
+            };
+
+            user.SetPassword(form.Password);
+            SyncProperty(form.Roles, user.Roles);
+            int refId = 0;
+            SyncProperty(form.Cinsiyetler, ref refId);
+            user.CinsiyetRefId = refId;
+            Database.Session.Save(user);
+            return RedirectToRoute("Login");
         }
     }
 }
