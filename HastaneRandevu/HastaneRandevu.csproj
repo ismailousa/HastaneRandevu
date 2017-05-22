@@ -237,7 +237,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\styles\bootstrap-theme.css.map" />
     <Content Include="Areas\Hasta\Views\HesapBilgisi\Form.cshtml" />
-    <Content Include="Areas\Hasta\Views\Shared\_ProfilNav.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -16,13 +16,16 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
         // GET: Hasta/HesapBilgisi
         public ActionResult Index()
         {
+            var cinsiyet = Database.Session.Load<Cinsiyet>(Auth.User.CinsiyetRefId);
+
             return View("Form",new ProfileForm {
                 modifyPassword = false,
                 KimlikNo = Auth.User.KimlikNo,
                 Username = Auth.User.Username,
                 Email = Auth.User.Email,
                 DogumTarihi = Auth.User.DogumTarihi,
-                Telefon = Auth.User.Telefon
+                Telefon = Auth.User.Telefon,
+                Cinsiyet = cinsiyet.Name
             });
         }
 
@@ -30,12 +33,7 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
         {
             return View("Form", new ProfileForm
             {
-                modifyPassword = true,
-                KimlikNo = Auth.User.KimlikNo,
-                Username = Auth.User.Username,
-                Email = Auth.User.Email,
-                DogumTarihi = Auth.User.DogumTarihi,
-                Telefon = Auth.User.Telefon
+                modifyPassword = true
             });
         }
 
