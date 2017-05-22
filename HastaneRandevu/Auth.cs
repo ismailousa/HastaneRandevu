@@ -23,7 +23,7 @@ namespace HastaneRandevu
 
                 if (user == null)
                 {
-                    user = Database.Session.Query<User>().FirstOrDefault(p => p.Username == HttpContext.Current.User.Identity.Name);
+                    user = Database.Session.Query<User>().FirstOrDefault(p => p.KimlikNo == HttpContext.Current.User.Identity.Name);
 
                 }
 

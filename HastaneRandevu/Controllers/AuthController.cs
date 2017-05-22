@@ -36,7 +36,7 @@ namespace HastaneRandevu.Controllers
                 redirect = true;
             FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
-            //if (redirect)
+            if (redirect)
                 if (!string.IsNullOrWhiteSpace(returnUrl))
                     return Redirect(returnUrl);
 

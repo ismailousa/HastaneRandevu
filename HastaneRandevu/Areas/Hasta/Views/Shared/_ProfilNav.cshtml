@@ -1,0 +1,20 @@
+﻿@model HastaneRandevu.Areas.Hasta.ViewModels.ProfileForm
+<div class="panel panel-info">
+    <div class="panel-body">
+        <ul class="nav nav-stacked table-striped">
+            <li class="@if (Model.modifyPassword == false)
+                            {
+                               @:active
+                            }">
+                @Html.ActionLink("Profil Bilgileri", "index", "HesapBilgisi", new { area = "Hasta" }, new { @class = "navbar-brand" })
+            </li>
+            <li class="@if (Model.modifyPassword == true)
+                            {
+                               @:active
+                            }">
+                @Html.ActionLink("Sifre Degistirme", "resetpassword", "HesapBilgisi", new { area = "Hasta" }, new { @class = "navbar-brand" })
+            </li>
+        </ul>
+    </div>
+
+</div>
