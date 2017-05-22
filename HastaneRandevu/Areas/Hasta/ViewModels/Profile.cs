@@ -10,16 +10,20 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
     {
         public bool modifyPassword { get; set; }
 
-        [Required, MaxLength(12)]
+        [MaxLength(12)]
         public string KimlikNo { get; set; }
 
-        [Required, MaxLength(50)]
+        [MaxLength(12)]
+        public string Cinsiyet { get; set; }
+
+        [MaxLength(50)]
         public string Username { get; set; }
 
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DogumTarihi { get; set; }
 
         [DataType(DataType.PhoneNumber)]
