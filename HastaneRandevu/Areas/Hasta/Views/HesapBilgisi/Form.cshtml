@@ -47,22 +47,23 @@
         }
         else
         {
-            using (Html.BeginForm("Form", "HesapBilgisi"))
+            <text>
+            @using (Html.BeginForm("Form", "HesapBilgisi"))
             {
-                <text>
+        @Html.ValidationSummary();
         <div class="form-group disabled">
             @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
-            @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control", @disabled = "true" })
         </div>
 
         <div class="form-group disabled">
             @Html.LabelFor(x => x.Username)
-            @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @disabled="true"})
         </div>
 
         <div class="form-group disabled">
             @Html.LabelFor(x => x.Cinsiyet)
-            @Html.PasswordFor(x => x.Cinsiyet, new { @class = "form-control" })
+            @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control", @disabled = "true" })
         </div>
 
         <div class="form-group">
@@ -77,13 +78,14 @@
 
         <div class="form-group date" data-date-format="mm/dd/yyyy">
             @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
-            @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control disabled" })
+            @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control", @disabled = "true" })
         </div>
         <input type="submit" value="Profili Guncelle" class="btn btn-primary" />
         <a href="@Url.Action("index", "Home")">ya da vazgec</a>
-                </text>
+                
 
             }
-        }
+            </text>
+}
     </div>
 </div>

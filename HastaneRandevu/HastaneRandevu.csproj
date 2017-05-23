@@ -282,6 +282,8 @@
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Migrations\_001_Users_and_Hospitals.cs" />
     <Compile Include="Models\Cinsiyet.cs" />
+    <Compile Include="Models\Doktor.cs" />
+    <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

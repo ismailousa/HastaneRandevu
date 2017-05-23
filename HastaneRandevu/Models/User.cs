@@ -25,7 +25,7 @@ namespace HastaneRandevu.Models
         public virtual IList<Role> Roles { get; set; }
         public User()
         {
-            Roles = new List<Role>();
+            Roles = new List<Role>();               
         }
 
         public virtual void SetPassword(string password)
@@ -41,6 +41,10 @@ namespace HastaneRandevu.Models
         public static void FakeHash()
         {
             BCrypt.Net.BCrypt.HashString("", 13);
+        }
+        public virtual string Cinsiyet()
+        {
+            return Database.Session.Load<Cinsiyet>(CinsiyetRefId).Name;
         }
     }
 

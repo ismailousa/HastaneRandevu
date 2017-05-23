@@ -16,8 +16,6 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
         // GET: Hasta/HesapBilgisi
         public ActionResult Index()
         {
-            var cinsiyet = Database.Session.Load<Cinsiyet>(Auth.User.CinsiyetRefId);
-
             return View("Form",new ProfileForm {
                 modifyPassword = false,
                 KimlikNo = Auth.User.KimlikNo,
@@ -25,7 +23,7 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
                 Email = Auth.User.Email,
                 DogumTarihi = Auth.User.DogumTarihi,
                 Telefon = Auth.User.Telefon,
-                Cinsiyet = cinsiyet.Name
+                Cinsiyet = Auth.User.Cinsiyet()
             });
         }
 
@@ -46,21 +44,22 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
             {
                 return HttpNotFound();
             }
+            if (!ModelState.IsValid)
+                return View(form);
 
             if (form.modifyPassword)
             {
-                //if (!ModelState.IsValid)
-                //    return View(form);
-
-                user.SetPassword(form.Password);
-
-
-                Database.Session.Update(user);
-
-                return RedirectToAction("index","Home");
+                user.SetPassword(form.Password);          
+            }
+            else
+            {
+                user.Telefon = form.Telefon;
+                user.Email = form.Email;
             }
 
-            return Content("Bilgi Guncelleme daha yazilmadi");
+            Database.Session.Update(user);
+
+            return RedirectToAction("index", "Home");
         }
     }
 }

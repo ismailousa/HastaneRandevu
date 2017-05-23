@@ -19,18 +19,19 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
         [MaxLength(50)]
         public string Username { get; set; }
 
-        [DataType(DataType.Password)]
+        [Required,DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DogumTarihi { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
+        [Required,DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"/^(0)[5|2]\d{9}\$/g", ErrorMessage = "Telefon numarayi 0xxxxxxxxxx formatinda girin")]
         public string Telefon { get; set; }
 
         [MaxLength(256)]
-        [DataType(DataType.EmailAddress)]
+        [Required,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
     }
 }
