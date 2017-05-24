@@ -26,7 +26,7 @@ namespace HastaneRandevu.Models
         {
             Doktor = Database.Session.Load<User>(DoktorId).Username;
             Hasta = Database.Session.Load<User>(HastaId).Username;
-            Klinik = Database.Session.Load<Doktor>(DoktorId).Username;
+            Klinik = Database.Session.Load<Klinik>(Database.Session.Load<Doktor>(DoktorId).KlinikId).KlinikAdi;
         }
     }
 

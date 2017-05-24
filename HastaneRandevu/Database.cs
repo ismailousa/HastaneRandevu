@@ -29,6 +29,13 @@ namespace HastaneRandevu
             mapper.AddMapping<UserMap>();
             mapper.AddMapping<RoleMap>();
             mapper.AddMapping<CinsiyetMap>();
+            mapper.AddMapping<AdminMap>();
+            mapper.AddMapping<DoktorMap>();
+            mapper.AddMapping<HastaneMap>();
+            mapper.AddMapping<IlMap>();
+            mapper.AddMapping<IlceMap>();
+            mapper.AddMapping<KlinikMap>();
+            mapper.AddMapping<RandevuMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
             _sessionFactory = config.BuildSessionFactory();

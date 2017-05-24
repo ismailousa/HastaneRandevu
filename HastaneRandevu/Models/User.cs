@@ -16,13 +16,17 @@ namespace HastaneRandevu.Models
         public virtual string Username { get; set; }
         public virtual string PasswordHash { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public virtual  DateTime DogumTarihi { get; set; }
         [ForeignKey("cinsiyet")]
         public virtual int CinsiyetRefId { get; set; }
         public virtual string Email { get; set; }
         public virtual string Telefon { get; set; }
         public virtual IList<Role> Roles { get; set; }
+
+        public virtual Doktor DoktorDetay { get; set; }
+        public virtual Admin AdminDetay { get; set; }
+
         public User()
         {
             Roles = new List<Role>();               
