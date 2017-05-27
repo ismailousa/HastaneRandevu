@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HastaneRandevu.ViewModels
 {
@@ -32,9 +33,9 @@ namespace HastaneRandevu.ViewModels
         public IList<CinsiyetRadioBox> Cinsiyetler { get; set; }
 
         [Required]
-        public IList<Il> Iller { get; set; }
+        public IList<SelectListItem> Iller { get; set; }
         [Required]
-        public IList<Ilce> Ilceler { get; set; }
+        public IList<SelectListItem> Ilceler { get; set; }
         [Required]
         public string HastaneAdi { get; set; }
     }

@@ -36,29 +36,22 @@
 
             <div class="form-group date" data-date-format="mm/dd/yyyy">
                 @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
-                @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control datepicker" })
+                @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control datecontrol", @id="DT"})
             </div>
         </div>
     </div>
-    List<SelectListItem> listItems = new List<SelectListItem>();
-    foreach (var il in Model.Iller)
-    {
-        listItems.Add(new SelectListItem
-        {
-            Text = il.IlAdi,
-            Value = il.Id.ToString()
-        });
-    }
+   
     <div class="panel panel-default">
         <div class="panel-heading">Hastane Bilgileri</div>
         <div class="panel-body">
                     <div class="form-group">
-                        @Html.LabelFor(x => x.Iller, "Doğum Tarihi")
-                        @Html.DropDownListFor(x => x.Iller, listItems, "--Hicbiri--", new { @class = "dropdown1 form-control" })
+                        @Html.LabelFor(x => x.Iller, "Il")
+                        @Html.DropDownListFor(x => x.Iller, Model.Iller, "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
                     </div>
 
                     <div class="form-group">
-                        @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1 form-control" })
+                        @Html.LabelFor(x => x.Ilceler, "Ilce")
+                      @Html.DropDownListFor(x => x.Ilceler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" }) 
                     </div>
 
              <div class="form-group">
@@ -69,7 +62,7 @@
                     @*@Html.Partial("_RoleEditor", Model.Roles)*@
 
                     <input type="submit" value="Kaydet" class="btn btn-primary" />
-                    <a href="@Url.Action("Login")">ya da iptal</a>
+                    <a href="@Url.Action("Login")">ya da vazgeç</a>
 
         </div>
     </div>
@@ -79,7 +72,32 @@
 
 @section Calen{
     <script>
-        $('DogumTarihi').datepicker({ format: 'mm/dd/yyyy', startDate: '-3d' });
+        $('#DT').datepicker({ format: 'mm/dd/yyyy', startDate: '-3d' });
     </script>
 }
 
+@section Sync{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#ddlIl').change(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/Users/GetIlce",
+                    data: { Id: $('#ddlIl').val() },
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        var ilce = "<select id='ddlIlce'>";
+                        ilce = ilce + '<option value="">--Select--</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                        }
+                        district = district + '</select>';
+                        $('#Ilceler').html(ilce);
+                    }
+                });
+            });
+        });
+</script>
+    }
