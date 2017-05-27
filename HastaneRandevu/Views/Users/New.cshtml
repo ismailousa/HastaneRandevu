@@ -35,25 +35,7 @@
         @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
         @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control datepicker"})
     </div>
-   
-        List<SelectListItem> listItems = new List<SelectListItem>();
-        foreach (var role in Model.Roles)
-        {
-            listItems.Add(new SelectListItem
-            {
-                Text = role.Name,
-                Value = role.Id.ToString()
-            });
-        }
-   
-    <div class="form-group">
-        @Html.LabelFor(x => x.Roles, "Doğum Tarihi")
-        @Html.DropDownListFor(x=> x.Roles, listItems, "--Hicbiri--", new {@class = "dropdown1 form-control"})
-    </div>
-
-    <div class="form-group">
-        @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1 form-control" })
-    </div>
+ 
     @*@Html.Partial("_RoleEditor", Model.Roles)*@
 
     <input type="submit" value="Create User" class="btn btn-primary" />

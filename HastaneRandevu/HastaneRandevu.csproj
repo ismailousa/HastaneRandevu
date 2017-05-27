@@ -306,6 +306,7 @@
     <Content Include="Views\Users\New.cshtml" />
     <Content Include="Views\Shared\_CinsiyetEditor.cshtml" />
     <Content Include="Views\Shared\_RoleEditor.cshtml" />
+    <Content Include="Views\Users\Hastane.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -172,12 +172,19 @@ namespace HastaneRandevu.Controllers
             return Json(new SelectList(states, "Value", "Text"));
         }
 
-        //public ActionResult Hastane()
-        //{
-        //    return View(new HastaneNew
-        //    {
-        //        Iller = x
-        //    });
-        //}
+        public ActionResult Hastane()
+        {
+            return View(new HastaneNew
+            {
+                Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
+                    cinsiyet => new CinsiyetRadioBox()
+                    {
+                        Id = cinsiyet.Id,
+                        Name = cinsiyet.Name
+                    }).ToList(),
+                Iller = Database.Session.Query<Il>().ToList(),
+                Ilceler = Database.Session.Query<Ilce>().ToList()
+            });
+        }
     }
 }

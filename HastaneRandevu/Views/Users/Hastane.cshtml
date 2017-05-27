@@ -1,0 +1,85 @@
+﻿@model HastaneRandevu.ViewModels.HastaneNew
+<h1>Yeni Admin ve Hastane</h1>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Admin Bilgileri</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
+                @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Username)
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control", type = "password" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Telefon)
+                @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+            </div>
+
+            @Html.Partial("_CinsiyetEditor", Model.Cinsiyetler)
+
+            <div class="form-group date" data-date-format="mm/dd/yyyy">
+                @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
+                @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control datepicker" })
+            </div>
+        </div>
+    </div>
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach (var il in Model.Iller)
+    {
+        listItems.Add(new SelectListItem
+        {
+            Text = il.IlAdi,
+            Value = il.Id.ToString()
+        });
+    }
+    <div class="panel panel-default">
+        <div class="panel-heading">Hastane Bilgileri</div>
+        <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Iller, "Doğum Tarihi")
+                        @Html.DropDownListFor(x => x.Iller, listItems, "--Hicbiri--", new { @class = "dropdown1 form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1 form-control" })
+                    </div>
+
+             <div class="form-group">
+                @Html.LabelFor(x => x.HastaneAdi)
+                @Html.TextBoxFor(x => x.HastaneAdi, new { @class = "form-control" })
+            </div>
+
+                    @*@Html.Partial("_RoleEditor", Model.Roles)*@
+
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    <a href="@Url.Action("Login")">ya da iptal</a>
+
+        </div>
+    </div>
+}
+
+
+
+@section Calen{
+    <script>
+        $('DogumTarihi').datepicker({ format: 'mm/dd/yyyy', startDate: '-3d' });
+    </script>
+}
+
