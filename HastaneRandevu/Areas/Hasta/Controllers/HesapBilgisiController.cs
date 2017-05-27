@@ -44,6 +44,20 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (form.modifyPassword) //We preferred this to using Required then, adding and hiding extra fields in our view
+            {
+                if (form.Password == null)
+                    ModelState.AddModelError("Password", "Sifre bos olamaz");
+            }
+            else
+            {
+                if (form.Email == null)
+                    ModelState.AddModelError("Email", "Email gereklidir");
+                if (form.Telefon == null)
+                    ModelState.AddModelError("Telefon", "Telefon numara gereklidir");
+            }
+
             if (!ModelState.IsValid)
                 return View(form);
 

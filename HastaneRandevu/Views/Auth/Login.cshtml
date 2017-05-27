@@ -20,9 +20,13 @@
     <div>
         <input type="submit" value="Giriş" style="margin-left:70px" class="btn btn-primary"/>
 
-        <div class="btn btn-link btn-sm" style="margin-left:15px"><i class="glyphicon glyphicon-plus" ></i>
-            @Html.RouteLink(" Üye Ol","YeniUye")
+        <div class="btn btn-link btn-sm"><i class="glyphicon glyphicon-plus" ></i>
+            @Html.RouteLink("Üye Ol","YeniUye")
         </div>
+    </div>
+    <div class="btn btn-link btn-sm" style="margin-left:60px">
+        <i class="glyphicon glyphicon-plus"></i>
+        @Html.RouteLink("Hastane Ekle", "YeniHastane")
     </div>
 }
 

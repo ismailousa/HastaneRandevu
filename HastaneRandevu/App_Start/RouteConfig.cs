@@ -22,7 +22,8 @@ namespace HastaneRandevu
             routes.MapRoute("Login", "", new { controller = "Auth", action = "Login" }, namespaces);
             routes.MapRoute("Logout", "logout", new { controller = "Auth", action = "Logout" }, namespaces);
             routes.MapRoute("YeniUye", "Users/New", new { controller = "Users", action = "New" });
-            
+            routes.MapRoute("YeniHastane", "Hastane/New", new { controller = "Users", action = "Hastane" });
+
         }
     }
 }

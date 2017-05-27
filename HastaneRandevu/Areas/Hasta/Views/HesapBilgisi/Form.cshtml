@@ -34,6 +34,7 @@
                 {
                     @Html.ValidationSummary()
                     @Html.HiddenFor(f => f.modifyPassword)
+                    
                     <div class="form-group">
                         @Html.LabelFor(f => f.Password)
                         @Html.TextBoxFor(f => f.Password, new { @class = "form-control", type="Password"})
@@ -50,7 +51,8 @@
             <text>
             @using (Html.BeginForm("Form", "HesapBilgisi"))
             {
-        @Html.ValidationSummary();
+        @Html.ValidationSummary()
+         
         <div class="form-group disabled">
             @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
             @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control", @disabled = "true" })
@@ -66,6 +68,23 @@
             @Html.TextBoxFor(x => x.Cinsiyet, new { @class = "form-control", @disabled = "true" })
         </div>
 
+        if (User.IsInRole("Doktor"))
+        {
+            <div class="form-group disabled">
+                @Html.LabelFor(x => x.Klinik)
+                @Html.TextBoxFor(x => x.Klinik, new { @class = "form-control", @disabled = "true" })
+            </div>
+        }
+
+        if (!User.IsInRole("Hasta"))
+        {
+
+            <div class="form-group disabled">
+                @Html.LabelFor(x => x.Hastane)
+                @Html.TextBoxFor(x => x.Hastane, new { @class = "form-control", @disabled = "true" })
+            </div>
+        }
+
         <div class="form-group">
             @Html.LabelFor(x => x.Telefon)
             @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
@@ -80,6 +99,9 @@
             @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
             @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control", @disabled = "true" })
         </div>
+
+        @Html.HiddenFor(x => x.Password)
+
         <input type="submit" value="Profili Guncelle" class="btn btn-primary" />
         <a href="@Url.Action("index", "Home")">ya da vazgec</a>
                 
