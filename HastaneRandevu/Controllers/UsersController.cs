@@ -1,4 +1,5 @@
-﻿using HastaneRandevu.Models;
+﻿using HastaneRandevu.Infrastructure;
+using HastaneRandevu.Models;
 using HastaneRandevu.ViewModels;
 using NHibernate.Linq;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Controllers
 {
+    [SelectedTabAttribute("Register")]
     public class UsersController : Controller
     {
 
