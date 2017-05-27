@@ -25,17 +25,18 @@ namespace HastaneRandevu.App_Start
                 );
 
             bundles.Add(new ScriptBundle("~/scripts")
-                   .Include("~/scripts/jquery-1.8.0.js")
+                   .Include("~/scripts/jquery-3.1.1.js")
                    .Include("~/scripts/jquery.validate.js")
                    .Include("~/scripts/jquery.validate.unobtrusive.js")
                    .Include("~/scripts/bootstrap.js")
+                   .Include("~/scripts/moment.js")
                    .Include("~/scripts/bootstrap-datetimepicker.js")
                    .Include("~/scripts/myDatePicker.js")
                );
 
 
             bundles.Add(new ScriptBundle("~/admin/scripts")
-                    .Include("~/scripts/jquery-1.8.0.js")
+                    .Include("~/scripts/jquery-3.1.1.js")
                     .Include("~/scripts/jquery.validate.js")
                     .Include("~/scripts/jquery.validate.unobtrusive.js")
                     .Include("~/scripts/bootstrap.js")

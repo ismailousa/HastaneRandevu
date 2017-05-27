@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
-    [Authorize(Roles = "Hasta")]
+    [Authorize(Roles = "Hasta, Admin, Hasta")]
     [SelectedTabAttribute("Home")]
     public class HomeController : Controller
     {

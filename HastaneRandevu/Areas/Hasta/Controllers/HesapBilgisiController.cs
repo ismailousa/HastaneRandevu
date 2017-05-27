@@ -9,7 +9,7 @@ using HastaneRandevu.Areas.Hasta.ViewModels;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
-    [Authorize(Roles = "Hasta")]
+    [Authorize(Roles = "Hasta, Admin, Hasta")]
     [SelectedTabAttribute("HesapBilgisi")]
     public class HesapBilgisiController : Controller
     {

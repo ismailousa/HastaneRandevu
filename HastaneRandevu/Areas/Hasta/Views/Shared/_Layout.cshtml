@@ -11,6 +11,18 @@ if (ViewBag.SelectedTab == tabName)
 }
 }
 
+@helper SelectedArea()
+{
+if (User.IsInRole("Admin"))
+{
+        @:Admin
+}
+else
+{
+        @:Doktor
+}
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,13 +46,27 @@ if (ViewBag.SelectedTab == tabName)
                     @Html.ActionLink("Hesap Bilgisi", "Index", "HesapBilgisi",new { area = "Hasta" }, new { @class = "navbar-brand" })
                 </li>
                 
-                <li class="@SelectedTabClass("RandevuGecmisi")">
-                    @Html.ActionLink("Randevu Gecmisi", "Index", "RandevuGecmisi", new { area = "Hasta" }, new { @class = "navbar-brand" })
+                <li class="@SelectedTabClass("Randevularim")">
+                    @Html.ActionLink("Randevularım", "Index", "RandevuGecmisi", new { area = "Hasta" }, new { @class = "navbar-brand" })
                 </li>
 
                 <li class="pull-right">
                     @Html.ActionLink("Çıkıs", "Logout", "Auth", new { area = "" }, new { @class = "navbar-brand" })
                 </li>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="pull-right">
+                        @Html.ActionLink("Admin Sayfasi", "index", "Home", new { area = "Admin" }, new { @class = "navbar-brand" })
+                    </li>
+                }
+                else if (User.IsInRole("Doktor"))
+                {
+                    <li class="pull-right">
+                        @Html.ActionLink("Doktor Sayfasi", "index", "Home", new { area = "Doktor" }, new { @class = "navbar-brand" })
+                    </li>
+                }
+
             </ul>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>

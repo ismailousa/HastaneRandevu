@@ -73,11 +73,19 @@
 
 
 
-@section Calen{
+@*@section Calen{
     <script>
-        $('#DT').datepicker({ format: 'mm/dd/yyyy', startDate: '-3d' });
+        $(document).ready(function () {
+            $("#DT").datepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                todayHighlight: true,
+                clearBtn: true,
+                orientation: 'bottom'
+            });
+        });
     </script>
-}
+}*@
 
 @section Sync{
     <script type="text/javascript">
@@ -96,7 +104,7 @@
                         for (var i = 0; i < data.length; i++) {
                             ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
                         }
-                        district = district + '</select>';
+                        ilce = ilce + '</select>';
                         $('#Ilceler').html(ilce);
                     }
                 });

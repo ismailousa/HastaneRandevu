@@ -147,7 +147,6 @@
     <Content Include="Areas\Hasta\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Hasta\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Hasta\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Hasta\Views\HesapBilgisi\Index.cshtml" />
     <Content Include="Areas\Hasta\Views\RandevuGecmisi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -155,9 +154,9 @@
     <Content Include="Areas\Doktor\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Doktor\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Doktor\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Doktor\Views\HesapBilgisi\Index.cshtml" />
+    <Content Include="Areas\Doktor\Views\HesapBilgisi\Form.cshtml" />
     <Content Include="Areas\Doktor\Views\RandevuGecmisi\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\HesapBilgisi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HesapBilgisi\Form.cshtml" />
     <Content Include="Areas\Admin\Views\RandevuGecmisi\Index.cshtml" />
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\bootstrap\variables.less" />
@@ -236,13 +235,21 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\styles\bootstrap-theme.css.map" />
-    <Content Include="Areas\Hasta\Views\HesapBilgisi\Form.cshtml" />
+    <Content Include="Areas\Hasta\Views\Shared\Form.cshtml" />
+    <Content Include="Areas\Hasta\Views\Shared\_Form.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -302,7 +309,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Users\New.cshtml" />
     <Content Include="Views\Shared\_CinsiyetEditor.cshtml" />
     <Content Include="Views\Shared\_RoleEditor.cshtml" />
@@ -319,7 +325,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Doktor\Models\" />
     <Folder Include="Areas\Hasta\Models\" />
-    <Folder Include="Areas\Hasta\Views\Admin\" />
+    <Folder Include="Areas\Hasta\Views\HesapBilgisi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

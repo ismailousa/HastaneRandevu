@@ -18,7 +18,7 @@ namespace HastaneRandevu.Controllers
             return View(new AuthLogin());
         }
         [HttpPost]
-        public ActionResult Login(AuthLogin form, string returnUrl)
+        public ActionResult Login(AuthLogin form)
         {
             var user = Database.Session.Query<User>().FirstOrDefault(u => u.KimlikNo == form.KimlikNo);
 
@@ -31,14 +31,14 @@ namespace HastaneRandevu.Controllers
             {
                 return View(form);
             }
-            bool redirect = false;
-            if (User != null)
-                redirect = true;
+            //bool redirect = false;
+            //if (Auth.User != null)
+            //    redirect = true;
             FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
-            if (redirect)
-                if (!string.IsNullOrWhiteSpace(returnUrl))
-                    return Redirect(returnUrl);
+            //if (redirect)
+            //    if (!string.IsNullOrWhiteSpace(returnUrl))
+            //        return Redirect(returnUrl);
 
             if (User.IsInRole("Admin"))
                 return RedirectToAction("Index", "Home", new { area = "Admin" });

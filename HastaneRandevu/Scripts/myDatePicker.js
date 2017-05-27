@@ -1,7 +1,13 @@
 ﻿if (!Modernizr.inputtypes.date) {
     $(function () {
 
-        $(".datecontrol").datepicker();
+        $("#DT").datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            clearBtn: true,
+            orientation: 'bottom'
+        });
 
     });
 }
