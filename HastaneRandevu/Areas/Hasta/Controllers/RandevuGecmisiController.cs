@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
-    [Authorize(Roles = "Hasta, Admin, Hasta")]
+    [Authorize(Roles = "Hasta, Admin, Doktor")]
     [SelectedTabAttribute("Randevularım")]
     public class RandevuGecmisiController : Controller
     {

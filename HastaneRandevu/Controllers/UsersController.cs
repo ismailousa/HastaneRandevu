@@ -109,8 +109,8 @@ namespace HastaneRandevu.Controllers
             };
 
             user.SetPassword(form.Password);
-            //user.Roles.Add(Database.Session.Load<Role>(1));
-            SyncProperty(form.Roles, user.Roles);
+            user.Roles.Add(Database.Session.Load<Role>(2));
+            //SyncProperty(form.Roles, user.Roles);
             int refId = 0;
             SyncProperty(form.Cinsiyetler, ref refId);
             user.CinsiyetRefId = refId;

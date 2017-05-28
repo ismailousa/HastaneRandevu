@@ -3,6 +3,14 @@
     Layout = null;
 }
 
+@helper SelectedTabClass(string tabName)
+{
+if (ViewBag.SelectedTab == tabName)
+{
+        @:active
+}
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,17 +25,24 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "Doktor" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Hesap Bilgisi", "Index", "HesapBilgisi", new { area = "Doktor" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Randevu Gecmisi", "Index", "RandevuGecmisi", new { area = "Doktor" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Çıkıs", "Logout", "Auth", new { area = "" }, new { @class = "navbar-brand pull-right" })
-            </div>
+            <ul class="nav nav-pills">
+                <li class="@SelectedTabClass("Home")">
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "Doktor" }, new { @class = "navbar-brand" })
+                </li>
+
+                <li class="@SelectedTabClass("HesapBilgisi")">
+                    @Html.ActionLink("Hesap Bilgisi", "Index", "HesapBilgisi", new { area = "Doktor" }, new { @class = "navbar-brand" })
+                </li>
+
+                <li class="pull-right">
+                    @Html.ActionLink("Çıkıs", "Logout", "Auth", new { area = "" }, new { @class = "navbar-brand" })
+                </li>
+
+                <li class="pull-right">
+                    @Html.ActionLink("Randevularım", "Index", "Home", new { area = "Hasta" }, new { @class = "navbar-brand" })
+                </li>
+
+            </ul>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
             </div>
