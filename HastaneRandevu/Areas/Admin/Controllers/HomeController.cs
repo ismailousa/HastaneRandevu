@@ -34,5 +34,16 @@ namespace HastaneRandevu.Areas.Admin.Controllers
 
             return View(new UsersList() { Users = new PagedData<UserInfo>(users, kullaniciSayisi, page, PostPerPage)});
         }
+
+        public ActionResult UserSil(int id)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            Database.Session.Delete(user);
+            Database.Session.Flush();
+            return RedirectToAction("index");
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
 
     public class UserInfo
     {
+        public int Id { get; set; }
         public string KimlikNo { get; set; }
         public string AdSoyad { get; set; }
         public string Rol { get; set; }
@@ -18,6 +19,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
 
         public UserInfo(User user)
         {
+            Id = user.Id;
             KimlikNo = user.KimlikNo;
             AdSoyad = user.Username;
             Rol = user.Roles.First().Name;

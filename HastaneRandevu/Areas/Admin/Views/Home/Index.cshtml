@@ -6,21 +6,25 @@
 
 <div class="btn-toolbar" style="height:50px">
     <div class="btn-group">
-        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Kullanıcı Ekle</a>
+        <a href="@Url.Action("new")" class="btn btn-primary btn-group-sm"><i class="glyphicon glyphicon-plus"></i>Kullanıcı Ekle</a>
     </div>
 
-    <div class="btn-group" style="height:50px">
-        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Klinik Ekle</a>
+    <div class="btn-group" style="height:200px">
+        <a href="@Url.Action("new")" class="btn btn-primary btn-group-sm"><i class="glyphicon glyphicon-plus"></i>Klinik Ekle</a>
     </div>
 </div>
 
 <div class="btn-toolbar">
     <div class="btn-group">
-        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Kullanıcılar</a>
+        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-user"></i>Kullanıcılar</a>
     </div>
 
     <div class="btn-group">
-        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Klinikler</a>
+        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-home"></i>Klinikler</a>
+    </div>
+
+    <div class="btn-group">
+        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-calendar"></i>Randevular</a>
     </div>
     <div class="btn-group pull-right">
         @if (Model.Users.HasPreviousPage)
@@ -70,7 +74,12 @@
                     <td>@user.AdSoyad</td>
                     <td>@user.Rol</td>
                     <td>@user.Klinik</td>
-                    <td>{TODO}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("UserDuzenle",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                            <a href="@Url.Action("UserSil",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Sil</a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>

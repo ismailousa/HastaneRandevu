@@ -1,4 +1,5 @@
-﻿using NHibernate.Mapping.ByCode;
+﻿using NHibernate.Linq;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,14 @@ namespace HastaneRandevu.Models
         {
             return Database.Session.Load<Cinsiyet>(CinsiyetRefId).Name;
         }
+        public virtual void SetDetails()
+        {
+            if (Roles.First().Name == "Admin")
+                AdminDetay = Database.Session.Query<Admin>().First(x => x.AdminId == Id);
+            else
+                DoktorDetay = Database.Session.Query<Doctor>().First(x => x.DoktorId == Id);
+        }
+
     }
 
     public class UserMap : ClassMapping<User>

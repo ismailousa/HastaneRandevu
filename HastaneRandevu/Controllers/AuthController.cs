@@ -31,14 +31,10 @@ namespace HastaneRandevu.Controllers
             {
                 return View(form);
             }
-            //bool redirect = false;
-            //if (Auth.User != null)
-            //    redirect = true;
+
             FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
-            //if (redirect)
-            //    if (!string.IsNullOrWhiteSpace(returnUrl))
-            //        return Redirect(returnUrl);
+            Auth.User.SetDetails();
 
             if (User.IsInRole("Admin"))
                 return RedirectToAction("Index", "Home", new { area = "Admin" });

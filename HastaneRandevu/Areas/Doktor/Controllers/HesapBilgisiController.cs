@@ -25,8 +25,8 @@ namespace HastaneRandevu.Areas.Doktor.Controllers
                 DogumTarihi = Auth.User.DogumTarihi,
                 Telefon = Auth.User.Telefon,
                 Cinsiyet = Auth.User.Cinsiyet()
-                //Hastane = Database.Session.Query<Klinik>(Auth.User.DoktorDetay.KlinikId).ToString
-               // Klinik = Database.Session.Query<Doktor>.Where(x=>x.DoktorId == Auth.User.KimlikNo).toString()
+                 Hastane = Database.Session.Load<Hastane>(Auth.User.DoktorDetay.HastaneId).HastaneAdi,
+                Klinik = Database.Session.Load<Klinik>(Auth.User.DoktorDetay.KlinikId).KlinikAdi
             });
         }
 
@@ -75,6 +75,7 @@ namespace HastaneRandevu.Areas.Doktor.Controllers
             }
 
             Database.Session.Update(user);
+            Database.Session.Flush();
 
             return RedirectToAction("index", "Home");
         }

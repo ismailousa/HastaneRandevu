@@ -72,6 +72,7 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
             }
 
             Database.Session.Update(user);
+            Database.Session.Flush();
 
             return RedirectToAction("index", "Home");
         }

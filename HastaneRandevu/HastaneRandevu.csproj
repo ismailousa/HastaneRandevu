@@ -325,6 +325,7 @@
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Migrations\_001_Users_and_Hospitals.cs" />
+    <Compile Include="Migrations\_002_Users_and_Hospitals.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Cinsiyet.cs" />
     <Compile Include="Models\Doktor.cs" />

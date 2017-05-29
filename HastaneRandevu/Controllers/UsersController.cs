@@ -109,12 +109,13 @@ namespace HastaneRandevu.Controllers
             };
 
             user.SetPassword(form.Password);
-            user.Roles.Add(Database.Session.Load<Role>(2));
+            user.Roles.Add(Database.Session.Load<Role>(3));
             //SyncProperty(form.Roles, user.Roles);
             int refId = 0;
             SyncProperty(form.Cinsiyetler, ref refId);
             user.CinsiyetRefId = refId;
             Database.Session.Save(user);
+            Database.Session.Flush();
             return RedirectToRoute("Login");
         }
 
