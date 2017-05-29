@@ -1,7 +1,80 @@
-﻿
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersList
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Burasi admin sayfasi </h2>
+<div class="btn-toolbar" style="height:50px">
+    <div class="btn-group">
+        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Kullanıcı Ekle</a>
+    </div>
+
+    <div class="btn-group" style="height:50px">
+        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Klinik Ekle</a>
+    </div>
+</div>
+
+<div class="btn-toolbar">
+    <div class="btn-group">
+        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Kullanıcılar</a>
+    </div>
+
+    <div class="btn-group">
+        <a href="@Url.Action("new")" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-plus"></i>Klinikler</a>
+    </div>
+    <div class="btn-group pull-right">
+        @if (Model.Users.HasPreviousPage)
+        {
+            <a href="@Url.Action("index",new { page=Model.Users.PreviousPage})" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Önceki Sayfa
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default disabled btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Önceki Sayfa
+            </a>
+        }
+        @if (Model.Users.HasNextPage)
+        {
+            <a href="@Url.Action("index",new { page=Model.Users.NextPage})" class="btn btn-primary btn-sm">
+
+                Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default disabled btn-sm">
+
+                Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+    </div>
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Kimlik No</th>
+                <th>Ad Soyad</th>
+                <th>Rol</th>
+                <th>Klinik</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.KimlikNo</td>
+                    <td>@user.AdSoyad</td>
+                    <td>@user.Rol</td>
+                    <td>@user.Klinik</td>
+                    <td>{TODO}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 

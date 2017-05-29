@@ -36,7 +36,7 @@
 
     <div class="form-group date" data-date-format="mm/dd/yyyy">
         @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
-        @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control datepicker"})
+        @Html.EditorFor(x => x.DogumTarihi, new { @class = "form-control"})
     </div>
  
     @*@Html.Partial("_RoleEditor", Model.Roles)*@
@@ -46,8 +46,14 @@
 
     
 }
-@section Calen{
+@*@section Calen{
     <script>
-        $('DogumTarihi').datepicker({ format: 'mm/dd/yyyy', startDate: '-3d' });
+        $('.date-picker').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            clearBtn: true,
+            orientation: 'bottom'
+        });
 </script>
-    }
+    }*@

@@ -18,6 +18,7 @@ namespace HastaneRandevu.App_Start
                 .Include("~/content/styles/bootstrap.css")
                 .Include("~/content/styles/Site.css")
                 .Include("~/content/styles/bootstrap-datetimepicker.css")
+                .Include("~/content/styles/jquery-ui.css")
                 );
             bundles.Add(new StyleBundle("~/doktor/styles")
                 .Include("~/content/styles/bootstrap.css")
@@ -31,7 +32,7 @@ namespace HastaneRandevu.App_Start
                    .Include("~/scripts/bootstrap.js")
                    .Include("~/scripts/moment.js")
                    .Include("~/scripts/bootstrap-datetimepicker.js")
-                   .Include("~/scripts/myDatePicker.js")
+                   .Include("~/scripts/jquery-ui-1.12.1.js")
                );
 
 

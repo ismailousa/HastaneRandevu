@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HastaneRandevu.Models
 {
-    public class Doktor
+    public class Doctor
     {
         [ForeignKey("user")]
         public virtual int DoktorId { get; set; }
@@ -18,7 +18,7 @@ namespace HastaneRandevu.Models
         public virtual float Puan { get; set; }
     }
 
-    public class DoktorMap : ClassMapping<Doktor>
+    public class DoktorMap : ClassMapping<Doctor>
     {
         public DoktorMap()
         {
