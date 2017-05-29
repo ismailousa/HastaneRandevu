@@ -34,8 +34,6 @@ namespace HastaneRandevu.Controllers
 
             FormsAuthentication.SetAuthCookie(form.KimlikNo, true);
 
-            Auth.User.SetDetails();
-
             if (User.IsInRole("Admin"))
                 return RedirectToAction("Index", "Home", new { area = "Admin" });
             else if (User.IsInRole("Doktor"))

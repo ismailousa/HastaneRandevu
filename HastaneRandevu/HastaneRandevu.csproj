@@ -277,6 +277,10 @@
     <Content Include="Content\styles\bootstrap-theme.css.map" />
     <Content Include="Areas\Hasta\Views\Shared\Form.cshtml" />
     <Content Include="Areas\Hasta\Views\Shared\_Form.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header2.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Klinikler.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Header1.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Randevular.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

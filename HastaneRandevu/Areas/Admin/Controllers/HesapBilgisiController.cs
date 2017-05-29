@@ -15,6 +15,7 @@ namespace HastaneRandevu.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
+            //Auth.User.SetDetails();
             return View("Form", new ProfileForm
             {
                 modifyPassword = false,
@@ -23,9 +24,9 @@ namespace HastaneRandevu.Areas.Admin.Controllers
                 Email = Auth.User.Email,
                 DogumTarihi = Auth.User.DogumTarihi,
                 Telefon = Auth.User.Telefon,
-                Cinsiyet = Auth.User.Cinsiyet(),
-                Hastane = Database.Session.Load<Hastane>(Auth.User.AdminDetay.HastaneId).HastaneAdi,
-                Klinik = Database.Session.Load<Klinik>(Auth.User.AdminDetay.KlinikId).KlinikAdi
+                Cinsiyet = Auth.User.Cinsiyet()
+                //Hastane = Database.Session.Load<Hastane>(Auth.User.AdminDetay.HastaneId).HastaneAdi,
+                //Klinik = Database.Session.Load<Klinik>(Auth.User.AdminDetay.KlinikId).KlinikAdi
             });
         }
 

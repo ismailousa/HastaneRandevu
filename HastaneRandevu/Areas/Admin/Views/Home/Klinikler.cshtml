@@ -1,7 +1,7 @@
-﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersList
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.KlinikList
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Klinikler";
 }
 
 @Html.Partial("_Header1")
@@ -9,9 +9,9 @@
 <div class="btn-toolbar">
     @Html.Partial("_Header2")
     <div class="btn-group pull-right">
-        @if (Model.Users.HasPreviousPage)
+        @if (Model.Klinikler.HasPreviousPage)
         {
-            <a href="@Url.Action("index",new { page=Model.Users.PreviousPage})" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("index",new { page=Model.Klinikler.PreviousPage})" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-chevron-left"></i>
                 Önceki Sayfa
             </a>
@@ -23,9 +23,9 @@
                 Önceki Sayfa
             </a>
         }
-        @if (Model.Users.HasNextPage)
+        @if (Model.Klinikler.HasNextPage)
         {
-            <a href="@Url.Action("index",new { page=Model.Users.NextPage})" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("index",new { page=Model.Klinikler.NextPage})" class="btn btn-primary btn-sm">
 
                 Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
             </a>
@@ -41,25 +41,21 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
-                <th>Kimlik No</th>
-                <th>Ad Soyad</th>
-                <th>Rol</th>
-                <th>Klinik</th>
+                <th>Id</th>
+                <th>Klinik Adı</th>
                 <th>İşlem</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var user in Model.Users)
+            @foreach (var klinik in Model.Klinikler)
             {
                 <tr>
-                    <td>@user.KimlikNo</td>
-                    <td>@user.AdSoyad</td>
-                    <td>@user.Rol</td>
-                    <td>@user.Klinik</td>
+                    <td>@klinik.Id</td>
+                    <td>@klinik.KlinikAdi</td>
                     <td>
                         <div class="btn-group">
-                            <a href="@Url.Action("UserDuzenle",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
-                            <a href="@Url.Action("UserSil",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Sil</a>
+                            <a href="@Url.Action("KlinikDuzenle",new {klinik.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                            <a href="@Url.Action("KlinikSil",new {klinik.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Sil</a>
                         </div>
                     </td>
                 </tr>
@@ -67,5 +63,4 @@
         </tbody>
     </table>
 </div>
-
 

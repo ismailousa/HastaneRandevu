@@ -13,9 +13,11 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
     [SelectedTabAttribute("HesapBilgisi")]
     public class HesapBilgisiController : Controller
     {
+
         // GET: Hasta/HesapBilgisi
         public ActionResult Index()
         {
+            //Auth.User.SetDetails();
             return View("Form",new ProfileForm {
                 modifyPassword = false,
                 KimlikNo = Auth.User.KimlikNo,

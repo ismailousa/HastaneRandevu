@@ -1,7 +1,7 @@
-﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersList
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.RandevuList
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Randevular";
 }
 
 @Html.Partial("_Header1")
@@ -9,9 +9,9 @@
 <div class="btn-toolbar">
     @Html.Partial("_Header2")
     <div class="btn-group pull-right">
-        @if (Model.Users.HasPreviousPage)
+        @if (Model.Randevular.HasPreviousPage)
         {
-            <a href="@Url.Action("index",new { page=Model.Users.PreviousPage})" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("index",new { page=Model.Randevular.PreviousPage})" class="btn btn-primary btn-sm">
                 <i class="glyphicon glyphicon-chevron-left"></i>
                 Önceki Sayfa
             </a>
@@ -23,9 +23,9 @@
                 Önceki Sayfa
             </a>
         }
-        @if (Model.Users.HasNextPage)
+        @if (Model.Randevular.HasNextPage)
         {
-            <a href="@Url.Action("index",new { page=Model.Users.NextPage})" class="btn btn-primary btn-sm">
+            <a href="@Url.Action("index",new { page=Model.Randevular.NextPage})" class="btn btn-primary btn-sm">
 
                 Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
             </a>
@@ -41,25 +41,29 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
-                <th>Kimlik No</th>
-                <th>Ad Soyad</th>
-                <th>Rol</th>
+                <th>Hasta</th>
+                <th>Doktor</th>
                 <th>Klinik</th>
+                <th>Durum</th>
+                <th>Tarih</th>
+                <th>Puan</th>
                 <th>İşlem</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var user in Model.Users)
+            @foreach (var randevu in Model.Randevular)
             {
                 <tr>
-                    <td>@user.KimlikNo</td>
-                    <td>@user.AdSoyad</td>
-                    <td>@user.Rol</td>
-                    <td>@user.Klinik</td>
+                    <td>@randevu.HastaAdi</td>
+                    <td>@randevu.DoktorAdi</td>
+                    <td>@randevu.KlinikAdi</td>
+                    <td>@randevu.Durum</td>
+                    <td>@randevu.Tarihi</td>
+                    <td>@randevu.Puan</td>
                     <td>
                         <div class="btn-group">
-                            <a href="@Url.Action("UserDuzenle",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
-                            <a href="@Url.Action("UserSil",new {user.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Sil</a>
+                            <a href="@Url.Action("RandevuDuzenle",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                            <a href="@Url.Action("RandevuSil",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Sil</a>
                         </div>
                     </td>
                 </tr>
@@ -67,5 +71,4 @@
         </tbody>
     </table>
 </div>
-
 

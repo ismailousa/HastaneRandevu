@@ -29,6 +29,51 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
                 Klinik = "";
         }
     }
+
+    public class KlinikInfo
+    {
+        public int Id { get; set; }
+        public string KlinikAdi { get; set; }
+
+        public KlinikInfo(Klinik klinik)
+        {
+            Id = klinik.Id;
+            KlinikAdi = klinik.KlinikAdi;
+        }
+    }
+
+    public class RandevuInfo
+    {
+        public int Id { get; set; }
+        public string HastaAdi { get; set; }
+        public string DoktorAdi { get; set; }
+        public string Durum { get; set; }
+        public float Puan { get; set; }
+        public string KlinikAdi { get; set; }
+        public DateTime Tarihi { get; set; }
+
+        public RandevuInfo(Randevu randevu)
+        {
+            randevu.setProperies();
+            Id = randevu.Id;
+            Puan = randevu.Puan;
+            Durum = randevu.Durum;
+            HastaAdi = randevu.Hasta;
+            DoktorAdi = randevu.Doktor;
+            KlinikAdi = randevu.Klinik;
+            Tarihi = randevu.TarihSaat;
+        }
+    }
+
+    public class RandevuList
+    {
+        public PagedData<RandevuInfo> Randevular { get; set; }
+    }
+
+    public class KlinikList
+    {
+        public PagedData<KlinikInfo> Klinikler { get; set; }
+    }
     public class UsersList
     {
         public PagedData<UserInfo> Users { get; set; }

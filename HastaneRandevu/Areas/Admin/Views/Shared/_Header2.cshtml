@@ -1,0 +1,22 @@
+﻿@helper Type(string button)
+{
+if (ViewBag.Title == button)
+{
+        @:active
+}
+}
+
+
+<div class="btn-group pull-left">
+    <a href="@Url.Action("index")" class="btn btn-default btn-sm @Type("Index")"><i class="glyphicon glyphicon-user"></i>Kullanıcılar</a>
+</div>
+
+<div class="btn-group pull-left">
+    <a href="@Url.Action("klinikler")" class="btn btn-default btn-sm @Type("Klinikler")"><i class="glyphicon glyphicon-home"></i>Klinikler</a>
+</div>
+
+<div class="btn-group pull-left">
+    <a href="@Url.Action("randevular")" class="btn btn-default btn-sm @Type("Randevular")"><i class="glyphicon glyphicon-calendar"></i>Randevular</a>
+</div>
+
+
