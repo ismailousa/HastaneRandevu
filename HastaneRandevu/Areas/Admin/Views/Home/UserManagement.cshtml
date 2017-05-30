@@ -1,0 +1,66 @@
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersNew
+@{
+    ViewBag.Title = "UserEkle";
+}
+
+<h2>@(Model.isNew ? "Kullanici Ekleme" : "Kullanici Duzenleme")</h2>
+
+@using (Html.BeginForm("UserManagement", "Home"))
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
+        @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+    </div>
+
+    if (Model.isNew)
+    {
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", type = "password" })
+    </div>
+    }
+    else
+    {
+        @Html.HiddenFor(x => x.Password)
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Telefon)
+        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+    </div>
+
+    @Html.Partial("~/Views/Shared/_CinsiyetEditor.cshtml", Model.Cinsiyetler)
+
+    <div class="form-group date" data-date-format="mm/dd/yyyy">
+        @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
+        @Html.EditorFor(x => x.DogumTarihi, new { @class = "form-control" })
+    </div>
+
+    @Html.Partial("_RoleEditor", Model.Roles)
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Klinikler, "Klinik")
+        @Html.DropDownListFor(x => x.Klinikler, Model.Klinikler, "--Seçin--", new { @class = "form-control", @id = "ddlKlinik" })
+    </div>
+
+    <input type="submit" value=@(Model.isNew ? "Ekle" : "Duzenle") class="btn btn-primary" />
+    <a href="@Url.Action("index")">ya da Vazgeç</a>
+
+
+}
+
+
+
+

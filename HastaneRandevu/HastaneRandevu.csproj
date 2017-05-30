@@ -281,6 +281,9 @@
     <Content Include="Areas\Admin\Views\Home\Klinikler.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Header1.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Randevular.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\UserManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_RoleEditor.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\KlinikEkle.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -308,6 +311,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Admin\Controllers\RandevuGecmisiController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Ekleme.cs" />
     <Compile Include="Areas\Admin\ViewModels\Management.cs" />
     <Compile Include="Areas\Doktor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Doktor\Controllers\HesapBilgisiController.cs" />
@@ -353,7 +357,6 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Users\New.cshtml" />
     <Content Include="Views\Shared\_CinsiyetEditor.cshtml" />
-    <Content Include="Views\Shared\_RoleEditor.cshtml" />
     <Content Include="Views\Users\Hastane.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

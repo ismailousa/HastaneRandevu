@@ -26,7 +26,7 @@ namespace HastaneRandevu.Models
         public virtual IList<Role> Roles { get; set; }
 
         public virtual Doctor DoktorDetay { get; set; }
-        public virtual Admin AdminDetay { get; set; }
+        public virtual Administrator AdminDetay { get; set; }
 
         public User()
         {
@@ -54,7 +54,7 @@ namespace HastaneRandevu.Models
         public virtual void SetDetails()
         {
             if (Roles.First().Name == "Admin")
-                AdminDetay = Database.Session.Query<Admin>().First(x => x.AdminId == Id);
+                AdminDetay = Database.Session.Query<Administrator>().First(x => x.AdminId == Id);
             else
                 DoktorDetay = Database.Session.Query<Doctor>().First(x => x.DoktorId == Id);
         }

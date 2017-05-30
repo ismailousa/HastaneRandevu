@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HastaneRandevu.Models
 {
-    public class Admin
+    public class Administrator
     {
         [ForeignKey("user")]
         public virtual int AdminId { get; set; }
@@ -17,7 +17,7 @@ namespace HastaneRandevu.Models
         public virtual int KlinikId { get; set; }
     }
 
-    public class AdminMap : ClassMapping<Admin>
+    public class AdminMap : ClassMapping<Administrator>
     {
         public AdminMap()
         {
