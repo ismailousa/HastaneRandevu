@@ -1,4 +1,5 @@
-﻿using HastaneRandevu.Models;
+﻿using HastaneRandevu.Areas.Admin.ViewModels;
+using HastaneRandevu.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

@@ -81,7 +81,7 @@
                             @Html.TextBoxFor(x => x.Hastane, new { @class = "form-control", @disabled = "true" })
                         </div>
                     }
-                    else
+                    else if (User.IsInRole("Admin"))
                     {
 
                         <div class="form-group disabled">

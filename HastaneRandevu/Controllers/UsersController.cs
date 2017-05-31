@@ -1,4 +1,5 @@
-﻿using HastaneRandevu.Infrastructure;
+﻿using HastaneRandevu.Areas.Admin.ViewModels;
+using HastaneRandevu.Infrastructure;
 using HastaneRandevu.Models;
 using HastaneRandevu.ViewModels;
 using NHibernate.Linq;

@@ -29,10 +29,11 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
         public string KlinikAdi { get; set; }
     }
 
-    public class UsersNew
+    public class UsersAdd
     {
         public bool isNew { get; set; }
 
+        [ScaffoldColumn(false)]
         public int Id { get; set; }
         [Required, MaxLength(12)]
         public string KimlikNo { get; set; }
@@ -40,7 +41,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
         [Required, MaxLength(50)]
         public string Username { get; set; }
 
-        [Required, DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Date)]

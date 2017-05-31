@@ -27,7 +27,7 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
         public DateTime DogumTarihi { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"/^(0)[5|2]\d{9}\$/g", ErrorMessage = "Telefon numarayi 0xxxxxxxxxx formatinda girin")]
+        [RegularExpression(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}", ErrorMessage = "Telefon numarayi 0xxxxxxxxxx formatinda girin")]
         public string Telefon { get; set; }
 
         [MaxLength(256),DataType(DataType.EmailAddress)]

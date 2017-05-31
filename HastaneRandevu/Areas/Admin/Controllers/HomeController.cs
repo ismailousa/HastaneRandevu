@@ -148,7 +148,7 @@ namespace HastaneRandevu.Areas.Admin.Controllers
 
         public ActionResult UserEkle()
         {
-            return View("UserManagement", new UsersNew()
+            return View("UserManagement", new UsersAdd()
             {
                 isNew = true,
                 Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
@@ -173,7 +173,7 @@ namespace HastaneRandevu.Areas.Admin.Controllers
             var user = Database.Session.Load<User>(id);
             if (user == null)
                 return HttpNotFound();
-            return View("UserManagement",new UsersNew()
+            return View("UserManagement",new UsersAdd()
             {
                 isNew = false,
                 Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
@@ -203,9 +203,9 @@ namespace HastaneRandevu.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserManagement(UsersNew form)
+        public ActionResult UserManagement(UsersAdd form)
         {
-            form.isNew = form.Id == 0;
+            //form.isNew = form.Id == 0;
             if (form.isNew)
             {
                 if (Database.Session.Query<User>().Any(u => u.KimlikNo == form.KimlikNo))
@@ -257,7 +257,7 @@ namespace HastaneRandevu.Areas.Admin.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return RedirectToAction("UserDuzenle", form.Id);
+                    return RedirectToAction("UserDuzenle", new { id = form.Id });
                 }
                 var user = new User
                 {

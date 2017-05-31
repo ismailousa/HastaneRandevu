@@ -61,7 +61,13 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
             }
 
             if (!ModelState.IsValid)
+            {
+                form.KimlikNo = Auth.User.KimlikNo;
+                form.Username = Auth.User.Username;
+                form.Cinsiyet = Auth.User.Cinsiyet();
+                form.DogumTarihi = Auth.User.DogumTarihi;
                 return View(form);
+            }
 
             if (form.modifyPassword)
             {

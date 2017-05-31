@@ -1,25 +1,12 @@
-﻿using System;
+﻿using HastaneRandevu.Areas.Admin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace HastaneRandevu.ViewModels
-{
-    public class RoleCheckBox
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public Boolean IsChecked { get; set; }
-    }
-
-    public class CinsiyetRadioBox
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public Boolean IsChecked { get; set; }
-    }
-
+{ 
     public class UsersNew
     {
         [Required, MaxLength(12)]

@@ -13,8 +13,6 @@ namespace HastaneRandevu.Models
         public virtual int AdminId { get; set; }
         [ForeignKey("hastane")]
         public virtual int HastaneId { get; set; }
-        [ForeignKey("doktor_detay")]
-        public virtual int KlinikId { get; set; }
     }
 
     public class AdminMap : ClassMapping<Administrator>
@@ -29,11 +27,6 @@ namespace HastaneRandevu.Models
             {
                 x.NotNullable(true);
                 x.Column("hastane_id");
-            });
-            Property(x => x.KlinikId, x =>
-            {
-                x.NotNullable(true);
-                x.Column("klinik_id");
             });
         }
     }

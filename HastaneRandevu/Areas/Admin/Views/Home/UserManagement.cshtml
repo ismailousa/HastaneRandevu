@@ -1,4 +1,4 @@
-﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersNew
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.UsersAdd
 @{
     ViewBag.Title = "UserEkle";
 }
@@ -9,6 +9,9 @@
 {
     @Html.ValidationSummary()
 
+    <fieldset>
+        @Html.HiddenFor(x => x.Password)
+    </fieldset>
     <div class="form-group">
         @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
         @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control" })
