@@ -1,7 +1,67 @@
-﻿
+﻿@model HastaneRandevu.Areas.Admin.ViewModels.RandevuList
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Doktor Home Page</h2>
+<div class="btn-toolbar">
+    @Html.Partial("_Header2")
+    <div class="btn-group pull-right">
+        @if (Model.Randevular.HasPreviousPage)
+        {
+            <a href="@Url.Action("index",new { page=Model.Randevular.PreviousPage})" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Önceki Sayfa
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default disabled btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Önceki Sayfa
+            </a>
+        }
+        @if (Model.Randevular.HasNextPage)
+        {
+            <a href="@Url.Action("index",new { page=Model.Randevular.NextPage})" class="btn btn-primary btn-sm">
+
+                Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default disabled btn-sm">
+
+                Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+    </div>
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Doktor Adı</th>
+                <th>Hasta adı</th>
+                <th>Klinik adı</th>
+                <th>Durum</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var randevu in Model.Randevular)
+            {
+                <tr>
+                    <td>@randevu.DoktorAdi</td>
+                    <td>@randevu.HastaAdi</td>
+                    <td>@randevu.KlinikAdi</td>
+                    <td>@randevu.Durum</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("UserDuzenle",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                            <a href="@Url.Action("UserSil",new {randevu.Id })" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-erase"></i>Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
