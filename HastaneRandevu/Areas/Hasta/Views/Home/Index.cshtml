@@ -9,31 +9,42 @@
 <div class="panel panel-default">
     <div class="panel-heading">Randevu Bilgileri</div>
     <div class="panel-body">
-        <div class="form-group">
-            @Html.LabelFor(x => x.Iller, "Il")
-            @Html.DropDownListFor(x => x.Iller, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
-        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Iller, "Il")
+                    @Html.DropDownListFor(x => x.Iller, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Ilceler, "Ilce")
-            @Html.DropDownListFor(x => x.Ilceler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Ilceler, "Ilce")
+                    @Html.DropDownListFor(x => x.Ilceler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Hastaneler, "Hastane Adi")
-            @Html.DropDownListFor(x => x.Hastaneler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Hastaneler, "Hastane Adi")
+                    @Html.DropDownListFor(x => x.Hastaneler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Klinikler, "Klinik")
-            @Html.DropDownListFor(x => x.Klinikler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Klinikler, "Klinik")
+                    @Html.DropDownListFor(x => x.Klinikler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(x => x.Doktorlar, "Doktor")
-            @Html.DropDownListFor(x => x.Doktorlar, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Doktorlar, "Doktor")
+                    @Html.DropDownListFor(x => x.Doktorlar, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                </div>
 
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Tarih, "Doktor")
+                    @Html.EditorFor(x => x.Tarih, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-5">
+
+            </div>
+        </div>
 
         <input type="submit" value="Randevu Al" class="btn btn-primary" />
         <a href="@Url.Action("Randevu Al")"></a>

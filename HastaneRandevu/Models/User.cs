@@ -25,7 +25,7 @@ namespace HastaneRandevu.Models
         public virtual string Telefon { get; set; }
         public virtual IList<Role> Roles { get; set; }
 
-        public virtual Doctor DoktorDetay { get; set; }
+        public virtual Doctor DoktorDetay { get; set; } 
         public virtual Administrator AdminDetay { get; set; }
 
         public User()

@@ -10,19 +10,21 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
 {
     public class MainPage
     {
-        internal List<Il> il;
-        internal List<SelectListItem> hastaneler;
+        //internal List<Il> il;
+        //internal List<SelectListItem> hastaneler;
 
         [Required]
-        public virtual List<SelectListItem> Iller { get; internal set; }
+        public List<SelectListItem> Iller { get; internal set; }
         [Required]
-        public IList<SelectListItem> Ilceler { get; set; }
+        public List<SelectListItem> Ilceler { get; set; }
         [Required]
         public IList<SelectListItem> Hastaneler { get; set; }
 
         [Required]
-        public IList<SelectListItem> Klinikler { get; set; }
+        public List<SelectListItem> Klinikler { get; set; }
         [Required]
-        public IList<SelectListItem> Doktorlar { get; set; }
+        public List<SelectListItem> Doktorlar { get; set; }
+
+        public DateTime Tarih { get; set; }
     }
 }
