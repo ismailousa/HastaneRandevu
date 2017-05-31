@@ -10,21 +10,25 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
 {
     public class MainPage
     {
-        //internal List<Il> il;
-        //internal List<SelectListItem> hastaneler;
+        [Required]
+        public List<Il> Iller { get; set; }
+        [Required]
+        public List<Ilce> Ilceler { get; set; }
+        public int il { get; set; }
+        public int Ilce { get; set; }
+        [Required]
+        public List<Hastane> Hastaneler { get; set; }
+        [Required]
+        public List<Klinik> Klinikler { get; set; }
+        [Required]
+        public List<User> Doktordetay { get; set; }
+        public int hastane { get; set; }
+        public int klinik { get; set; }
+        public int doktor { get; set; }
 
-        [Required]
-        public List<SelectListItem> Iller { get; internal set; }
-        [Required]
-        public List<SelectListItem> Ilceler { get; set; }
-        [Required]
-        public IList<SelectListItem> Hastaneler { get; set; }
-
-        [Required]
-        public List<SelectListItem> Klinikler { get; set; }
-        [Required]
-        public List<SelectListItem> Doktorlar { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Tarih { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime RandevuTarihi { get; set; }
+
     }
 }

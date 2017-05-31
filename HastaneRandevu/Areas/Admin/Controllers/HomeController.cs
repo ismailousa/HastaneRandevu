@@ -148,9 +148,8 @@ namespace HastaneRandevu.Areas.Admin.Controllers
 
         public ActionResult UserEkle()
         {
-            return View("UserManagement", new UsersAdd()
+            return View(new UsersAdd()
             {
-                isNew = true,
                 Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
                     cinsiyet => new CinsiyetRadioBox()
                     {
@@ -173,9 +172,9 @@ namespace HastaneRandevu.Areas.Admin.Controllers
             var user = Database.Session.Load<User>(id);
             if (user == null)
                 return HttpNotFound();
-            return View("UserManagement",new UsersAdd()
+            return View("Duzenle",new UsersAdd()
             {
-                isNew = false,
+                modifyPassword = false,
                 Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
                     cinsiyet => new CinsiyetRadioBox()
                     {
@@ -203,11 +202,8 @@ namespace HastaneRandevu.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserManagement(UsersAdd form)
+        public ActionResult UserEkle(UsersAdd form)
         {
-            form.isNew = !Database.Session.Query<User>().Any(x => x.KimlikNo == form.KimlikNo);
-            if (form.isNew)
-            {
                 if (Database.Session.Query<User>().Any(u => u.KimlikNo == form.KimlikNo))
                     ModelState.AddModelError("Kimlik No", "Kimlik No tek olmasi gerekir");
                 if (!ModelState.IsValid)
@@ -252,20 +248,48 @@ namespace HastaneRandevu.Areas.Admin.Controllers
                         //Doktor detaylari girilecek
                     };
                 }
+            Database.Session.Flush();
+            return RedirectToRoute("index");
+        }
+
+        [HttpPost]
+        public ActionResult Duzenle(UsersAdd form)
+        {
+            var user = Database.Session.Query<User>().First(x => x.KimlikNo == form.KimlikNo);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (form.modifyPassword) //We preferred this to using Required then, adding and hiding extra fields in our view
+            {
+                if (form.Password == null)
+                    ModelState.AddModelError("Password", "Sifre bos olamaz");
             }
             else
             {
-                if (!ModelState.IsValid)
-                {
-                    return RedirectToAction("UserDuzenle", new { id = form.Id });
-                }
-                var user = new User
-                {
-                    KimlikNo = form.KimlikNo,
-                    Username = form.Username,
-                    Email = form.Email,
-                    Telefon = form.Telefon
-                };
+                if (form.Email == null)
+                    ModelState.AddModelError("Email", "Email gereklidir");
+                if (form.Telefon == null)
+                    ModelState.AddModelError("Telefon", "Telefon numara gereklidir");
+            }
+
+            if (!ModelState.IsValid)
+                return RedirectToAction("UserDuzenle", new { id = form.Id });
+
+            
+            if (form.modifyPassword)
+            {
+                user.SetPassword(form.Password);
+            }
+            else
+            {
+                user.KimlikNo = form.KimlikNo;
+                user.Username = form.Username;
+                user.Email = form.Email;
+                user.Telefon = form.Telefon;
+               
                 if (form.DogumTarihi != null)
                     user.DogumTarihi = form.DogumTarihi;
                 if (form.Password != null)
@@ -275,18 +299,42 @@ namespace HastaneRandevu.Areas.Admin.Controllers
                 int refId = 0;
                 SyncProperty(form.Cinsiyetler, ref refId);
                 user.CinsiyetRefId = refId;
-                Database.Session.Save(user);
-                user = Database.Session.Query<User>().First(x => x.KimlikNo == form.KimlikNo);
-                if (user.Roles.First().Name == "Admin")
+            }
+
+            Database.Session.Update(user);
+            Database.Session.Flush();
+            if (user.Roles.First().Name == "Admin" && form.modifyPassword == false)
+            {
+                var admin = new Administrator()
                 {
-                    var doktor = new Administrator()
-                    {
-                        //Doktor detaylari girilecek
-                    };
+                    AdminId = user.Id,
+                    HastaneId = Auth.User.AdminDetay.HastaneId
+                };
+                if (Database.Session.Query<Administrator>().Any(x => x.AdminId == admin.AdminId))
+                {
+                    var ad = Database.Session.Query<Administrator>().First(x => x.AdminId == admin.AdminId);
+                    ad.AdminId = admin.AdminId;
+                    ad.HastaneId = admin.HastaneId;
+                    Database.Session.Update(ad);
+                }
+                else
+                {
+                    Database.Session.Save(admin);
                 }
             }
             Database.Session.Flush();
-            return RedirectToRoute("index");
+            return RedirectToAction("index", "Home");
+        }
+
+        public ActionResult ResetPassword(int id)
+        {
+            var user = Database.Session.Load<User>(id);
+            return View("Duzenle", new UsersAdd
+            {
+                Id = user.Id,
+                KimlikNo = user.KimlikNo,
+                modifyPassword = true
+            });
         }
 
         public ActionResult KlinikEkle()

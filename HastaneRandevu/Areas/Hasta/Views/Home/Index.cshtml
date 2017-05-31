@@ -17,38 +17,40 @@
                     @Html.ValidationSummary()
 
                     <div class="form-group">
+
                         @Html.LabelFor(x => x.Iller, "Il")
-                        @Html.DropDownListFor(x => x.Iller, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
+                        @Html.DropDownListFor(m => m.il,
+             new SelectList(Model.Iller, "Id", "IlAdi"), "--Seçin--", new { @class = "form-control" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(x => x.Ilceler, "Ilce")
-                        @Html.DropDownListFor(x => x.Ilceler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" })
+                        @Html.DropDownListFor(m => m.Ilce,
+             new SelectList(Model.Ilceler, "IlID", "IlceAdi"), "--Seçin--", new { @class = "form-control" })
                     </div>
-
                     <div class="form-group">
-                        @Html.LabelFor(x => x.Hastaneler, "Hastane Adi")
-                        @Html.DropDownListFor(x => x.Hastaneler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                        @Html.LabelFor(x => x.Hastaneler, "Hastane")
+                        @Html.DropDownListFor(m => m.hastane,
+             new SelectList(Model.Hastaneler, "Id", "HastaneAdi"), "--Seçin--", new { @class = "form-control" })
                     </div>
-
                     <div class="form-group">
                         @Html.LabelFor(x => x.Klinikler, "Klinik")
-                        @Html.DropDownListFor(x => x.Klinikler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.klinik,
+             new SelectList(Model.Klinikler, "Id", "KlinikAdi"), "--Seçin--", new { @class = "form-control" })
                     </div>
-
                     <div class="form-group">
-                        @Html.LabelFor(x => x.Doktorlar, "Doktor")
-                        @Html.DropDownListFor(x => x.Doktorlar, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+                        @Html.LabelFor(x => x.Doktordetay, "User")
+                        @Html.DropDownListFor(m => m.doktor,
+             new SelectList(Model.Doktordetay, "Id", "DoktorDetay"), "--Seçin--", new { @class = "form-control" })
                     </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(x => x.Tarih)
-                        @Html.EditorFor(x => x.Tarih, new { @class = "form-control" })
+                    <div class="form-group date" data-date-format="mm/dd/yyyy">
+                        @Html.LabelFor(x => x.RandevuTarihi, "Randevu Tarihi")
+                        @Html.EditorFor(x => x.RandevuTarihi, new { @class = "form-control" })
                     </div>
 
                     <input type="submit" value="Randevu Ara" class="btn btn-primary" />
 
-                    <a href="@Url.Action("Temizle")">ya da Vazgeç</a>
+                    <a href="@Url.Action("index")">ya da Vazgeç</a>
                 }
             </div>
         </div>

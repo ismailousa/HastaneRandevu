@@ -31,14 +31,14 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
 
     public class UsersAdd
     {
-        public bool isNew { get; set; }
+        public bool modifyPassword { get; set; }
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }
         [Required, MaxLength(12)]
         public string KimlikNo { get; set; }
 
-        [Required, MaxLength(50)]
+        [MaxLength(50)]
         public string Username { get; set; }
 
         [DataType(DataType.Password)]
@@ -48,10 +48,9 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DogumTarihi { get; set; }
 
-        [Required, DataType(DataType.PhoneNumber)]
+        [DataType(DataType.PhoneNumber)]
         public string Telefon { get; set; }
 
-        [Required]
         [MaxLength(256)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

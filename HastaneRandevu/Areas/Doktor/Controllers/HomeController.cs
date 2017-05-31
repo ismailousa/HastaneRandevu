@@ -14,10 +14,9 @@ namespace HastaneRandevu.Areas.Doktor.Controllers
     public class HomeController : Controller
     {
         private const int PostPerPage = 10;
-        // GET: Doktor/Doktor
+
         public ActionResult Index(int page = 1)
         {
-            //burda hata var vozulmesı gereklı
             int randevuSayisi = Database.Session.Query<Randevu>().Where(x=>x.DoktorId == Auth.User.Id).Count();
             var Randevular = Database.Session.Query<Randevu>().Where(x => x.DoktorId == Auth.User.Id);
             var Randevulars= new List<RandevuInfo>();

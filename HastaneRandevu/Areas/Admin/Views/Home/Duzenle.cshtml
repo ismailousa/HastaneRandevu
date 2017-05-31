@@ -1,0 +1,106 @@
+﻿
+@using System.Web.Optimization
+@model HastaneRandevu.Areas.Admin.ViewModels.UsersAdd
+
+
+<h1>Profil</h1>
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <ul class="nav nav-stacked table-striped">
+                    <li class="@if (Model.modifyPassword == false)
+                            {
+                               @:active
+                            }">
+                        @Html.ActionLink("Profil Bilgileri", "UserDuzenle", "Home", new { area = "Admin", Model.Id }, new { @class = "navbar-brand" })
+                    </li>
+                    <li class="@if (Model.modifyPassword == true)
+                            {
+                               @:active
+                            }">
+                        @Html.ActionLink("Sifre Degistirme", "resetpassword", "Home", new { area = "Admin", Model.Id }, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-9">
+        @if (Model.modifyPassword)
+        {
+            <text>
+                @using (Html.BeginForm("Duzenle", "Home"))
+                {
+                    @Html.ValidationSummary()
+                    @Html.HiddenFor(f => f.modifyPassword)
+
+                    @Html.HiddenFor(x => x.KimlikNo)
+
+                    <div class="form-group">
+                        @Html.LabelFor(f => f.Password)
+                        @Html.TextBoxFor(f => f.Password, new { @class = "form-control", type = "Password" })
+                    </div>
+
+                    <input type="submit" value="Sifreyi Degistir" class="btn btn-primary" />
+                    <a href="@Url.Action("index","Home")">ya da vazgec</a>
+                }
+
+            </text>
+        }
+        else
+        {
+            <text>
+                @using (Html.BeginForm("Duzenle", "Home"))
+                {
+                    @Html.ValidationSummary()
+
+                    <div class="form-group disabled">
+                        @Html.LabelFor(x => x.KimlikNo, "Kimlik No")
+                        @Html.TextBoxFor(x => x.KimlikNo, new { @class = "form-control", @disabled = "true" })
+                    </div>
+
+                    <div class="form-group disabled">
+                        @Html.LabelFor(x => x.Username)
+                        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @disabled = "true" })
+                    </div>
+
+                    @Html.Partial("~/Views/Shared/_CinsiyetEditor.cshtml", Model.Cinsiyetler)
+
+                    if (User.IsInRole("Doktor"))
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Klinikler, "Klinik")
+                            @Html.DropDownListFor(x => x.Klinikler, Model.Klinikler, "--Seçin--", new { @class = "form-control", @id = "ddlKlinik" })
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Telefon)
+                        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Email)
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+                    </div>
+
+                    <div class="form-group date" data-date-format="mm/dd/yyyy">
+                        @Html.LabelFor(x => x.DogumTarihi, "Doğum Tarihi")
+                        @Html.TextBoxFor(x => x.DogumTarihi, new { @class = "form-control", @disabled = "true" })
+                    </div>
+
+                    @Html.Partial("_RoleEditor", Model.Roles)
+
+                    @Html.HiddenFor(x => x.Password)
+
+                    <input type="submit" value="Profili Guncelle" class="btn btn-primary" />
+                    <a href="@Url.Action("index", "Home")">ya da vazgec</a>
+
+
+                }
+            </text>
+        }
+    </div>
+</div>

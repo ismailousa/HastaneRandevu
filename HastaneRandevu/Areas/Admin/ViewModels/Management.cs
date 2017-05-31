@@ -51,6 +51,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
         public float Puan { get; set; }
         public string KlinikAdi { get; set; }
         public DateTime Tarihi { get; set; }
+        public string Hastane { get; set; }
 
         public RandevuInfo(Randevu randevu)
         {
@@ -62,6 +63,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
             DoktorAdi = randevu.Doktor;
             KlinikAdi = randevu.Klinik;
             Tarihi = randevu.TarihSaat;
+            Hastane = Database.Session.Load<Hastane>(Database.Session.Query<Doctor>().First(x => x.DoktorId == randevu.DoktorId).HastaneId).HastaneAdi;
         }
     }
 

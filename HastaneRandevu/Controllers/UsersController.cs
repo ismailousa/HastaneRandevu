@@ -156,7 +156,6 @@ namespace HastaneRandevu.Controllers
                         Name = cinsiyet.Name
                     }).ToList(),
                 Iller = IlAdlari
-               // Ilceler = Database.Session.Query<Ilce>().ToList()
             });
         }
     }

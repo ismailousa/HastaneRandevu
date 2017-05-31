@@ -195,9 +195,7 @@
     <Content Include="Areas\Doktor\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Doktor\Views\Home\Index.cshtml" />
     <Content Include="Areas\Doktor\Views\HesapBilgisi\Form.cshtml" />
-    <Content Include="Areas\Doktor\Views\RandevuGecmisi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HesapBilgisi\Form.cshtml" />
-    <Content Include="Areas\Admin\Views\RandevuGecmisi\Index.cshtml" />
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\utilities.less" />
@@ -281,9 +279,11 @@
     <Content Include="Areas\Admin\Views\Home\Klinikler.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Header1.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Randevular.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\UserManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\UserEkle.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_RoleEditor.cshtml" />
     <Content Include="Areas\Admin\Views\Home\KlinikEkle.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Duzenle.cshtml" />
+    <Content Include="Areas\Hasta\Views\Home\RandevuGoster.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -310,12 +310,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HesapBilgisiController.cs" />
-    <Compile Include="Areas\Admin\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Ekleme.cs" />
     <Compile Include="Areas\Admin\ViewModels\Management.cs" />
     <Compile Include="Areas\Doktor\Controllers\HomeController.cs" />
     <Compile Include="Areas\Doktor\Controllers\HesapBilgisiController.cs" />
-    <Compile Include="Areas\Doktor\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Doktor\DoktorAreaRegistration.cs" />
     <Compile Include="Areas\Hasta\Controllers\HesapBilgisiController.cs" />
     <Compile Include="Areas\Hasta\Controllers\HomeController.cs" />
