@@ -59,7 +59,7 @@ namespace HastaneRandevu.Areas.Admin.ViewModels
         public IList<RoleCheckBox> Roles { get; set; }
         public IList<CinsiyetRadioBox> Cinsiyetler { get; set; }
 
-        [Required]
+        //[Required]
         public IList<SelectListItem> Klinikler { get; set; }
     }
 }

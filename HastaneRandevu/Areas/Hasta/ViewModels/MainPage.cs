@@ -24,7 +24,7 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
         public List<SelectListItem> Klinikler { get; set; }
         [Required]
         public List<SelectListItem> Doktorlar { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime Tarih { get; set; }
     }
 }

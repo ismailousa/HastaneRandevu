@@ -18,8 +18,8 @@ namespace HastaneRandevu.Areas.Doktor.Controllers
         public ActionResult Index(int page = 1)
         {
             //burda hata var vozulmesı gereklı
-            int randevuSayisi = Database.Session.Query<Randevu>().Count();
-            var Randevular = Database.Session.Query<Randevu>();
+            int randevuSayisi = Database.Session.Query<Randevu>().Where(x=>x.DoktorId == Auth.User.Id).Count();
+            var Randevular = Database.Session.Query<Randevu>().Where(x => x.DoktorId == Auth.User.Id);
             var Randevulars= new List<RandevuInfo>();
             foreach (var randevu in Randevular)
             {
@@ -27,32 +27,33 @@ namespace HastaneRandevu.Areas.Doktor.Controllers
             }
 
             Randevulars
-                .OrderBy(x => x.Id)
+                .OrderByDescending(x => x.Tarihi)
      
                 .ToList();
 
             return View(new RandevuList() { Randevular = new PagedData<RandevuInfo>(Randevulars, randevuSayisi, page, PostPerPage) });
             
         }
-        public ActionResult RandevuSil(int id)
+        public ActionResult RandevuIptal(int id)
         {
             var Randevu = Database.Session.Load<Randevu>(id);
             if (Randevu == null)
                 return HttpNotFound();
-
-            Database.Session.Delete(Randevu);
+            Randevu.Durum = "Doktor İptal";
+            Database.Session.Update(Randevu);
             Database.Session.Flush();
             return RedirectToAction("index");
         }
-        public ActionResult HastayaYonlendir(int id)
-        {
-            var user = Database.Session.Load<User>(id);
-            if (user == null)
-                return HttpNotFound();
 
-            //hasta areye yonlşendırcek burda hata var
-           
-            return RedirectToAction("index","Home","hasta");
+        public ActionResult RandevuRecover(int id)
+        {
+            var Randevu = Database.Session.Load<Randevu>(id);
+            if (Randevu == null)
+                return HttpNotFound();
+            Randevu.Durum = "Gelecek";
+            Database.Session.Update(Randevu);
+            Database.Session.Flush();
+            return RedirectToAction("index");
         }
     }
 }

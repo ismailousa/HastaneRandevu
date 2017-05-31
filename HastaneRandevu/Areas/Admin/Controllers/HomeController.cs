@@ -205,7 +205,7 @@ namespace HastaneRandevu.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UserManagement(UsersAdd form)
         {
-            //form.isNew = form.Id == 0;
+            form.isNew = !Database.Session.Query<User>().Any(x => x.KimlikNo == form.KimlikNo);
             if (form.isNew)
             {
                 if (Database.Session.Query<User>().Any(u => u.KimlikNo == form.KimlikNo))

@@ -4,7 +4,7 @@
 }
 
 <div class="btn-toolbar">
-    @Html.Partial("_Header2")
+    @*@Html.Partial("_Header2")*@
     <div class="btn-group pull-right">
         @if (Model.Randevular.HasPreviousPage)
         {
@@ -38,9 +38,8 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
-                <th>Doktor Adı</th>
                 <th>Hasta adı</th>
-                <th>Klinik adı</th>
+                <th>Tarih</th>
                 <th>Durum</th>
                 <th>İşlem</th>
             </tr>
@@ -49,16 +48,25 @@
             @foreach (var randevu in Model.Randevular)
             {
                 <tr>
-                    <td>@randevu.DoktorAdi</td>
                     <td>@randevu.HastaAdi</td>
-                    <td>@randevu.KlinikAdi</td>
+                    <td>@randevu.Tarihi</td>
                     <td>@randevu.Durum</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="@Url.Action("UserDuzenle",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
-                            <a href="@Url.Action("UserSil",new {randevu.Id })" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-erase"></i>Sil</a>
-                        </div>
-                    </td>
+                        @if (randevu.Durum == "Doktor Iptal")
+                        {
+                            <td>
+                                <div class="btn-group">
+                                    <a href="@Url.Action("RandevuRecover",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-circle-arrow-right"></i>Geri Al</a>
+                                </div>
+                            </td>
+                        }
+                        else if (randevu.Durum == "Gelecek")
+                        {
+                            <td>
+                                <div class="btn-group">
+                                    <a href="@Url.Action("RandevuIptal",new {randevu.Id })" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i>İptal Et</a>
+                                </div>
+                            </td>
+                        }
                 </tr>
             }
         </tbody>
