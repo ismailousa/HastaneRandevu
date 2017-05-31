@@ -321,6 +321,7 @@
     <Compile Include="Areas\Hasta\Controllers\HomeController.cs" />
     <Compile Include="Areas\Hasta\Controllers\RandevuGecmisiController.cs" />
     <Compile Include="Areas\Hasta\HastaAreaRegistration.cs" />
+    <Compile Include="Areas\Hasta\ViewModels\MainPage.cs" />
     <Compile Include="Areas\Hasta\ViewModels\Profile.cs" />
     <Compile Include="Auth.cs" />
     <Compile Include="Controllers\AuthController.cs" />

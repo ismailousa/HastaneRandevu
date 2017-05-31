@@ -1,6 +1,71 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@using System.Web.Optimization
+@model HastaneRandevu.Areas.Hasta.ViewModels.MainPage
+
+@{
+    ViewBag.Title = "Randevu Page";
 }
 
-<h2>This is patient home page</h2>
 
+<div class="panel panel-default">
+    <div class="panel-heading">Randevu Bilgileri</div>
+    <div class="panel-body">
+        <div class="form-group">
+            @Html.LabelFor(x => x.Iller, "Il")
+            @Html.DropDownListFor(x => x.Iller, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Ilceler, "Ilce")
+            @Html.DropDownListFor(x => x.Ilceler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Hastaneler, "Hastane Adi")
+            @Html.DropDownListFor(x => x.Hastaneler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Klinikler, "Klinik")
+            @Html.DropDownListFor(x => x.Klinikler, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Doktorlar, "Doktor")
+            @Html.DropDownListFor(x => x.Doktorlar, new List<SelectListItem>(), "--Seçin--", new { @class = "form-control" })
+        </div>
+
+
+        <input type="submit" value="Randevu Al" class="btn btn-primary" />
+        <a href="@Url.Action("Randevu Al")"></a>
+        <input type="submit" value="Temizle" class="btn btn-primary" />
+        <a href="@Url.Action("Temizle")"></a>
+    </div>
+</div>
+
+
+
+@section Sync{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#ddlIl').change(function () {
+                $.ajax({
+                    type: "post",
+                    url: "/Users/GetIlce",
+                    data: { Id: $('#ddlIl').val() },
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        var ilce = "<select id='ddlIlce'>";
+                        ilce = ilce + '<option value="">--Seçin--</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                        }
+                        ilce = ilce + '</select>';
+                        $('#Ilceler').html(ilce);
+                    }
+                });
+            });
+        });
+    </script>
+}
