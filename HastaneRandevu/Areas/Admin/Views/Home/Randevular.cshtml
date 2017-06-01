@@ -62,7 +62,14 @@
                     <td>@randevu.Puan</td>
                     <td>
                         <div class="btn-group">
+                            @if (randevu.Durum == "Gelecek")
+                            {
                             <a href="@Url.Action("RandevuIptal",new {randevu.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>İptal Et</a>
+                            }
+                            else if (randevu.Durum == "Admin Iptal")
+                            {
+                                <a href="@Url.Action("RandevuRecover",new {randevu.Id })" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-circle-arrow-right"></i>Geri Al</a>
+                            }
                             <a href="@Url.Action("RandevuSil",new {randevu.Id })" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-erase"></i>Sil</a>
                         </div>
                     </td>

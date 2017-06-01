@@ -10,17 +10,17 @@ namespace HastaneRandevu.Areas.Hasta.ViewModels
 {
     public class MainPage
     {
-        [Required]
+        
         public List<Il> Iller { get; set; }
-        [Required]
+        
         public List<Ilce> Ilceler { get; set; }
         public int il { get; set; }
         public int Ilce { get; set; }
-        [Required]
+        
         public List<Hastane> Hastaneler { get; set; }
-        [Required]
+        
         public List<Klinik> Klinikler { get; set; }
-        [Required]
+        
         public List<User> Doktordetay { get; set; }
         public int hastane { get; set; }
         public int klinik { get; set; }

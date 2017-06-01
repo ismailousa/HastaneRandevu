@@ -64,7 +64,7 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
             }
             ;
             var randevuinfo = new RandevuInfo(randevu);
-            return View("RandevuGoster",randevu);
+            return View("RandevuGoster",randevuinfo);
 
         }
 

@@ -11,7 +11,7 @@ using System.Web.Mvc;
 namespace HastaneRandevu.Areas.Hasta.Controllers
 {
     [Authorize(Roles = "Hasta, Admin, Doktor")]
-    [SelectedTabAttribute("Randevularım")]
+    [SelectedTabAttribute("Randevularim")]
     public class RandevuGecmisiController : Controller
     {
         private const int PostPerPage = 10;

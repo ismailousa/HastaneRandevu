@@ -131,6 +131,17 @@ namespace HastaneRandevu.Areas.Admin.Controllers
             return RedirectToAction("randevular");
         }
 
+        public ActionResult RandevuRecover(int id)
+        {
+            var Randevu = Database.Session.Load<Randevu>(id);
+            if (Randevu == null)
+                return HttpNotFound();
+            Randevu.Durum = "Gelecek";
+            Database.Session.Update(Randevu);
+            Database.Session.Flush();
+            return RedirectToAction("randevular");
+        }
+
         public List<SelectListItem> KlinikListesi(int id = 0)
         {
             var klinik = Database.Session.Query<Klinik>().ToList();

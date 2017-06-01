@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace HastaneRandevu.Areas.Doktor.Controllers
 {
     [Authorize(Roles = "Doktor")]
+    [SelectedTabAttribute("Home")]
     public class HomeController : Controller
     {
         private const int PostPerPage = 10;
