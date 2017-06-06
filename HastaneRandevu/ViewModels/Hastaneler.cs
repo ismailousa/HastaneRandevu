@@ -24,7 +24,7 @@ namespace HastaneRandevu.ViewModels
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DogumTarihi { get; set; }
 
-        [Required, DataType(DataType.PhoneNumber)]
+        [Required]
         public string Telefon { get; set; }
 
         [Required]
@@ -33,11 +33,11 @@ namespace HastaneRandevu.ViewModels
 
         public IList<CinsiyetRadioBox> Cinsiyetler { get; set; }
 
-        [Required]
         public IList<SelectListItem> Iller { get; set; }
-        [Required]
         public IList<SelectListItem> Ilceler { get; set; }
         [Required]
         public string HastaneAdi { get; set; }
+
+        public int SecilenIlce { get; set; }
     }
 }

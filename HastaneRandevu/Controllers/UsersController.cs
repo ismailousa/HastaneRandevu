@@ -158,5 +158,68 @@ namespace HastaneRandevu.Controllers
                 Iller = IlAdlari
             });
         }
+
+        [HttpPost]
+        public ActionResult Hastane(HastaneNew form)
+        {
+
+            if (Database.Session.Query<User>().Any(u => u.KimlikNo == form.KimlikNo))
+                ModelState.AddModelError("Kimlik No", "Kimlik No tek olmasi gerekir");
+            if (!ModelState.IsValid)
+            {
+                var il = Database.Session.Query<Il>().ToList();
+
+                List<SelectListItem> IlAdlari = new List<SelectListItem>();
+
+                il.ForEach(x =>
+                {
+                    IlAdlari.Add(new SelectListItem { Text = x.IlAdi, Value = x.Id.ToString() });
+                });
+
+                form.Cinsiyetler = Database.Session.Query<Cinsiyet>().Select(
+                    cinsiyet => new CinsiyetRadioBox()
+                    {
+                        Id = cinsiyet.Id,
+                        Name = cinsiyet.Name
+                    }).ToList();
+                form.Iller = IlAdlari;
+                return View(form);
+            }
+
+            var hastane = new Hastane
+            {
+                IlceID = form.SecilenIlce,
+                HastaneAdi = form.HastaneAdi,
+                Puan = 0
+            };
+            Database.Session.Save(hastane);
+
+            var user = new User
+            {
+                KimlikNo = form.KimlikNo,
+                Username = form.Username,
+                DogumTarihi = form.DogumTarihi,
+                Email = form.Email,
+                Telefon = form.Telefon
+            };
+
+            user.SetPassword(form.Password);
+            user.Roles.Add(Database.Session.Load<Role>(1));
+            int refId = 0;
+            SyncProperty(form.Cinsiyetler, ref refId);
+            user.CinsiyetRefId = refId;
+            Database.Session.Save(user);
+            Database.Session.Flush();
+
+            var admin = new Administrator
+            {
+                AdminId = Database.Session.Query<User>().First(x => x.KimlikNo == form.KimlikNo).Id,
+                HastaneId = Database.Session.Query<Hastane>().First(h => h.HastaneAdi == form.HastaneAdi).Id
+            };
+            Database.Session.Save(admin);
+            Database.Session.Flush();
+
+            return RedirectToRoute("Login");
+        }
     }
 }
