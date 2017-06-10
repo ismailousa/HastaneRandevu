@@ -20,35 +20,35 @@
 
                         @Html.LabelFor(x => x.Iller, "Il")
                         @Html.DropDownListFor(m => m.il,
-    new SelectList(Model.Iller, "Id", "IlAdi"), "--Seçin--", new { @class = "form-control" })
+    new SelectList(Model.Iller, "Id", "IlAdi"), "--Seçin--", new { @class = "form-control", @id = "ddlIl" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(x => x.Ilceler, "Ilce")
                         @Html.DropDownListFor(m => m.Ilce,
-             new SelectList(Model.Ilceler, "IlID", "IlceAdi"), "--Seçin--", new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(x => x.Hastaneler, "Hastane")
-                        @Html.DropDownListFor(m => m.hastane,
-             new SelectList(Model.Hastaneler, "Id", "HastaneAdi"), "--Seçin--", new { @class = "form-control" })
+             new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlIlce" })
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(x => x.Klinikler, "Klinik")
                         @Html.DropDownListFor(m => m.klinik,
-             new SelectList(Model.Klinikler, "Id", "KlinikAdi"), "--Seçin--", new { @class = "form-control" })
+             new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlKlinik" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(x => x.Doktordetay, "User")
+                        @Html.LabelFor(x => x.Hastaneler, "Hastane")
+                        @Html.DropDownListFor(m => m.hastane,
+             new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlHastane" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Doktordetay, "Doktor")
                         @Html.DropDownListFor(m => m.doktor,
-             new SelectList(Model.Doktordetay, "Id", "DoktorDetay"), "--Seçin--", new { @class = "form-control" })
+             new List<SelectListItem>(), "--Seçin--", new { @class = "form-control", @id = "ddlDoktor" })
                     </div>
                     <div class="form-group date" data-date-format="mm/dd/yyyy">
                         @Html.LabelFor(x => x.RandevuTarihi, "Randevu Tarihi")
                         @Html.EditorFor(x => x.RandevuTarihi, new { @class = "form-control" })
                     </div>
 
-                    <input type="" value="Randevu Ara" class="btn btn-primary" />
+                    <input type="submit" value="Randevu Ara" class="btn btn-primary" />
 
                     <a href="@Url.Action("index")">ya da Vazgeç</a>
                 }
@@ -91,30 +91,43 @@
 
 
 
-
-
-        @section Sync{
-            <script type="text/javascript">
-
-                $(document).ready(function () {
-                    $('#ddlIl').change(function () {
-                        $.ajax({
-                            type: "post",
-                            url: "/Users/GetIlce",
-                            data: { Id: $('#ddlIl').val() },
-                            datatype: "json",
-                            traditional: true,
-                            success: function (data) {
-                                var ilce = "<select id='ddlIlce'>";
-                                ilce = ilce + '<option value="">--Seçin--</option>';
-                                for (var i = 0; i < data.length; i++) {
-                                    ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
-                                }
-                                ilce = ilce + '</select>';
-                                $('#Ilceler').html(ilce);
-                            }
-                        });
-                    });
+ @section RandevuDDL
+ {
+<script type="text/javascript">
+    function cascadeDropDownList(url, source, target, ddlName) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: { Id: $('#' + source).val()},
+            dataType: 'json',
+            traditional: true,
+            success: function (data) {
+                alert("DDl balbal");
+                // remove previous option contents first
+                $('#' + target + ' option').each(function () {
+                    $(this).remove();
                 });
-            </script>
-        }
+
+                // add new option contents
+                var options = '<option value="">--' + ddlName + '--</option>';
+                for (var i = 0; i < data.length; i++) {
+                    options += '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                }
+                $('#' + target).html(options);
+            }
+        });
+    }
+</script>              
+            
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ddlIl').change(function () {
+            alert("DDl il changed");
+            var url = '@Url.Action("GetDLL", "Home")';
+            var source = $(this).attr('id');
+            var target = $('#ddlIlce').attr('id');
+            cascadeDropDownList(url, source, target, 'ddlIlce');
+        });
+    });
+</script>
+}

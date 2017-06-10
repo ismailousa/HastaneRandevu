@@ -77,19 +77,30 @@
         $(document).ready(function () {
             $('#ddlIl').change(function () {
                 $.ajax({
-                    type: "post",
+                    type: 'post',
                     url: "/Users/GetIlce",
                     data: { Id: $('#ddlIl').val() },
                     datatype: "json",
                     traditional: true,
                     success: function (data) {
-                        var ilce = "<select id='ddlIlce'>";
-                        ilce = ilce + '<option value="">--Seçin--</option>';
+                        //var ilce = "<select id='ddlIlce'>";
+                        //ilce = ilce + '<option value="">--Seçin--</option>';
+                        //for (var i = 0; i < data.length; i++) {
+                        //    ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                        //}
+                        //ilce = ilce + '</select>';
+                        //$('#ddlIlce').html(ilce);
+
+                        $('#ddlIlce option').each(function () {
+                            $(this).remove();
+                        });
+
+                        // add new option contents
+                        var options = '<option value="">--Seçin--</option>';
                         for (var i = 0; i < data.length; i++) {
-                            ilce = ilce + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                            options += '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
                         }
-                        ilce = ilce + '</select>';
-                        $('#ddlIlce').html(ilce);
+                        $('#ddlIlce').html(options);
                     }
                 });
             });
@@ -99,7 +110,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#ddlIlce').change(function () {
-            //alert($('#ddlIlce :selected').text());
             $('#secilen').val($('#ddlIlce :selected').val());
              });
          });

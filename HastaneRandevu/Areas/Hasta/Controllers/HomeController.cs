@@ -68,6 +68,21 @@ namespace HastaneRandevu.Areas.Hasta.Controllers
 
         }
 
-
+        [HttpPost]
+        public ActionResult GetDDL(string Id)
+        {
+            int IlId;
+            List<SelectListItem> IlceAdlari = new List<SelectListItem>();
+            if (!string.IsNullOrEmpty(Id))
+            {
+                IlId = Convert.ToInt32(Id);
+                var ilce = Database.Session.Query<Ilce>().Where(x => x.IlID == IlId).ToList();
+                ilce.ForEach(x =>
+                {
+                    IlceAdlari.Add(new SelectListItem { Text = x.IlceAdi, Value = x.Id.ToString() });
+                });
+            }
+            return Json(IlceAdlari, JsonRequestBehavior.AllowGet);
+        }
     }
 }
